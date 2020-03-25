@@ -157,4 +157,26 @@ class PostController extends Controller
         return redirect('today');
     }
 
+
+    public function vote(Request $request) {
+        /**
+         * function to handle voting and add vote to database
+         * 
+         * NOTE: request should contain vote_type and post_id
+         * @param Request
+         * @return Response
+         */
+
+        $post = Post::Where('id', $request->post_id)->first();
+
+        if ( $post->vote($request->vote_type) ) {
+            // redirect back if voted successfully
+            return redirect()->back();
+        }
+        else {
+            // redirect back with an error message if the operation was unsuccessful
+            return redirect()->back()->withErrors(['msg', 'Hmm... Something Went Wrong!']);;
+        }
+    }
+
 }
