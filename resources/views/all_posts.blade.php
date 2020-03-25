@@ -21,7 +21,7 @@
                         </span>
                         . {{ $post->title }}
                     </a>
-                    <span class="text-secondary link">(folan.com)</span>
+                    <span class="text-secondary link">({{ $post -> site_name }})</span>
                 </h2>
                 <h3 class="text-secondary">
                     {{ num_to_fa($post->likes - $post->dislikes)  }} 🔺 🔻 | نوشته {{ $post->user->name }} در
