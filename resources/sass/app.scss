@@ -1,0 +1,101 @@
+// Fonts
+@import url('https://fonts.googleapis.com/css?family=Nunito');
+
+// Variables
+@import 'variables';
+
+// Bootstrap
+@import '~bootstrap/scss/bootstrap';
+
+@font-face {
+    font-family: Vazir;
+    src: url('../fonts/Vazir.eot');
+    src: url('../fonts/Vazir.eot?#iefix') format('embedded-opentype'),
+    url('../fonts/Vazir.woff') format('woff'),
+    url('../fonts/Vazir.ttf') format('truetype');
+    font-weight: normal;
+}
+
+
+body {
+    font-family: 'Vazir', sans-serif !important;
+    direction: rtl;
+
+    .navbar {
+        .nav-list {
+
+        }
+    }
+
+    main {
+        h2 {
+            font-size: $text-size-1;
+        }
+
+        h3 {
+            font-size: $text-size-2;
+        }
+
+        #comment-btn {
+            line-height: 20px;
+            font-size: 20px;
+            width: 20px;
+            height: 20px;
+            padding: 0;
+        }
+
+        .post {
+            padding-bottom: 0.3rem;
+
+            .post-body {
+                padding-right: 16px;
+            }
+
+            h2 {
+
+                .number {
+                    width: 1rem;
+                    display: inline-block;
+                    text-align: right;
+                }
+
+                .link {
+                    font-size: $text-size-3;
+                }
+            }
+
+            h3 {
+                padding-right: 1.6rem;
+            }
+        }
+
+        .more {
+            margin-right: 2.7rem;
+
+            span {
+                font-size: $text-size-3;
+            }
+        }
+    }
+
+    footer {
+        h2 {
+            font-size: $text-size-1;
+        }
+
+        h3 {
+            font-size: $text-size-2;
+        }
+
+        ul {
+            padding: 0;
+            list-style-type: none;
+
+            li {
+                font-size: $text-size-3;
+                display: inline-flex;
+                margin: 0 2px;
+            }
+        }
+    }
+}
