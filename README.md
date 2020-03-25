@@ -1,10 +1,10 @@
-![FOSS4News_screenshot](/home/thepiker/Projects/FOSS/FOSS4News/doc/img/screenshot.png)
+![FOSS4News_screenshot](doc/img/screenshot.png)
 
 # FOSS4News
 
 Just a simple clone of The Hacker News based on Laravel Framework and Bootstrap4, which is under heavy construction. for now this project just have Farsi/Persian version but we are planning to have other language as soon as possible.
 
-> این صفحه را به فارسی در [اینجا](blob/master/docs/README_FA.md) مشاهده کنید
+> این صفحه را به فارسی در [اینجا](docs/README_FA.md) مشاهده کنید
 
 ## Run
 
