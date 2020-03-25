@@ -1,4 +1,5 @@
 ![FOSS4News_screenshot](doc/img/screenshot.png)
+[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2Fsadraiiali%2FFOSS4News.svg?type=shield)](https://app.fossa.io/projects/git%2Bgithub.com%2Fsadraiiali%2FFOSS4News?ref=badge_shield)
 
 # FOSS4News
 
@@ -45,6 +46,9 @@ before run this project you need to install [php](https://www.php.net/manual/en/
 ## License
 
 The main code is licensed under [GPLv3](https://github.com/sadraiiali/FOSS4News/blob/master/LICENSE).
+
+
+[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2Fsadraiiali%2FFOSS4News.svg?type=large)](https://app.fossa.io/projects/git%2Bgithub.com%2Fsadraiiali%2FFOSS4News?ref=badge_large)
 
 ## Contribute
 
