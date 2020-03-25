@@ -26,11 +26,21 @@ class PostController extends Controller
         if (isset($request['page'])) {
             $page = $request['page'];
         }
+        
         $all_post_with_user = Post::where([])->orderBy('created_at', 'DESC')->with('user')->paginate(30);
+        
         $is_end = false;
         if ($all_post_with_user->lastPage() == $page) {
             $is_end = true;
         }
+
+        // find site name with regex and put it in $all_post_with_user 
+        $site_name_pattern = '/([a-zA-Z0-9]([a-zA-Z0-9\-]{0,65}[a-zA-Z0-9])?\.)+[a-zA-Z]{2,6}/m';
+        foreach ($all_post_with_user as $post) {
+            preg_match_all($site_name_pattern, $post->link, $matches);
+            $post['site_name'] = $matches[0][0];
+        }
+
         return view('all_posts', [
             'posts' => $all_post_with_user,
             'page' => $request['page'],
