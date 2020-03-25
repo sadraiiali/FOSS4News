@@ -16,11 +16,6 @@ class Post extends Model
         return $this->morphMany(Comment::class, 'commentable');
     }
 
-    public function votes()
-    {
-        return $this->morphTo(Vote::class, 'voteable');
-    }
-
     public function reports()
     {
         return $this->morphMany(Report::class, 'reportable');
