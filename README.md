@@ -2,7 +2,7 @@
 
 # FOSS4News
 
-Just a simple clone of The Hacker News based on [Laravel Framework](https://laravel.com/docs/7.x/) and [Bootstrap4](https://getbootstrap.com/docs/4.4/getting-started/introduction/), which is under heavy construction. for now this project just have Farsi/Persian version but we are planning to have other language as soon as possible.
+Just a simple clone of The Hacker News based on [Laravel Framework](https://laravel.com/docs/7.x/) and [Bootstrap4](https://getbootstrap.com/docs/4.4/getting-started/introduction/),which is in alpha stage. The project has been released in Persian/Farsi language. We are planning additional languages in the future.
 
 > این صفحه را به فارسی در [اینجا](doc/README_FA.md) مشاهده کنید
 
