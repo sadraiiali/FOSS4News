@@ -7,6 +7,8 @@ use Illuminate\Support\Str;
 
 class Post extends Model
 {
+    use Voteable;
+    
     protected $guarded = [];
 
     public function comments()
