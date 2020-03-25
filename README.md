@@ -48,7 +48,7 @@ The main code is licensed under [GPLv3](https://github.com/sadraiiali/FOSS4News/
 
 ## Contribute
 
-Fill free to clone project, add your code and then submit a pull request. Any participate is willing :)
+Feel free to clone project, add your code and then submit a pull request. Any participate is willing :)
 
 ## Maintainers
 
