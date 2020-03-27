@@ -158,7 +158,7 @@ class PostController extends Controller
     }
 
 
-    public function vote(Request $request) {
+    public function vote(Post $post, int $reaction) {
         /**
          * function to handle voting and add vote to database
          * 
@@ -167,9 +167,7 @@ class PostController extends Controller
          * @return Response
          */
 
-        $post = Post::Where('id', $request->post_id)->first();
-
-        if ( $post->vote($request->vote_type) ) {
+        if ( $post->vote($reaction) ) {
             // redirect back if voted successfully
             return redirect()->back();
         }
