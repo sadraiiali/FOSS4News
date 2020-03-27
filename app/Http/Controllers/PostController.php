@@ -162,8 +162,11 @@ class PostController extends Controller
         /**
          * function to handle voting and add vote to database
          * 
-         * NOTE: request should contain vote_type and post_id
-         * @param Request
+         * TODO: create validation for this
+         * NOTE: reaction can have just to values: 1 (Upvote), 2 (DownVote)
+         * 
+         * @param Post
+         * @param int
          * @return Response
          */
 
