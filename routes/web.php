@@ -27,6 +27,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/p/{post:uri}/report', 'ReportController@create')->name('post_report');
     Route::post('/p/{post:uri}/report', 'ReportController@store')->name('create_post_report');
     Route::post('/p/{post:uri}/comment', 'CommentController@store')->name('create_comment');
+    Route::post('/vote', 'PostController@vote')->name('post.vote');
 });
 
 

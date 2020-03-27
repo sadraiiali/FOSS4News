@@ -7,16 +7,13 @@ use Illuminate\Support\Str;
 
 class Post extends Model
 {
+    use Voteable;
+    
     protected $guarded = [];
 
     public function comments()
     {
         return $this->morphMany(Comment::class, 'commentable');
-    }
-
-    public function votes()
-    {
-        return $this->morphTo(Vote::class, 'voteable');
     }
 
     public function reports()
