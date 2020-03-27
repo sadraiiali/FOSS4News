@@ -25,6 +25,9 @@
                 </h2>
                 <h3 class="text-secondary">
                     {{ num_to_fa($post->getPointsAttribute()) }} 
+                    <a href="{{ route('post.vote', [$post->uri, 1]) }}">🔺</a> 
+                    <a href="{{ route('post.vote', [$post->uri, 2]) }}">🔻</a>
+                    | نوشته {{ $post->user->name }} در
                     {{ num_to_fa(\Morilog\Jalali\Jalalian::forge($post->created_at)->ago()) }}
                     | {{ num_to_fa($post->comments_count) }}
                     <a class="text-secondary"
