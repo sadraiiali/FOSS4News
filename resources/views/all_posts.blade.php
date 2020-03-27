@@ -24,7 +24,7 @@
                     <span class="text-secondary link">({{ $post -> site_name }})</span>
                 </h2>
                 <h3 class="text-secondary">
-                    {{ num_to_fa($post->likes - $post->dislikes)  }} 🔺 🔻 | نوشته {{ $post->user->name }} در
+                    {{ num_to_fa($post->getPointsAttribute()) }} 
                     {{ num_to_fa(\Morilog\Jalali\Jalalian::forge($post->created_at)->ago()) }}
                     | {{ num_to_fa($post->comments_count) }}
                     <a class="text-secondary"
