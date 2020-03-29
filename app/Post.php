@@ -8,7 +8,7 @@ use Illuminate\Support\Str;
 class Post extends Model
 {
     use Voteable;
-    
+
     protected $guarded = [];
 
     public function comments()
@@ -24,6 +24,17 @@ class Post extends Model
     public function user()
     {
         return $this->belongsTo(User::class);
+    }
+
+    /**
+     * Find site name with regex and put it in $all_post_with_user
+     */
+    public function siteName()
+    {
+        $site_name_pattern = '/([a-zA-Z0-9]([a-zA-Z0-9\-]{0,65}[a-zA-Z0-9])?\.)+[a-zA-Z]{2,6}/m';
+        preg_match_all($site_name_pattern, $this->link, $matches);
+        return $matches[0][0];
+
     }
 
     public static function findUri($title)

@@ -21,11 +21,11 @@
                         </span>
                         . {{ $post->title }}
                     </a>
-                    <span class="text-secondary link">({{ $post -> site_name }})</span>
+                    <span class="text-secondary link">({{ $post -> siteName() }})</span>
                 </h2>
                 <h3 class="text-secondary">
-                    {{ num_to_fa($post->getPointsAttribute()) }} 
-                    <a href="{{ route('post.vote', [$post->uri, 1]) }}">🔺</a> 
+                    {{ num_to_fa($post->getPointsAttribute()) }}
+                    <a href="{{ route('post.vote', [$post->uri, 1]) }}">🔺</a>
                     <a href="{{ route('post.vote', [$post->uri, 2]) }}">🔻</a>
                     | نوشته {{ $post->user->name }} در
                     {{ num_to_fa(\Morilog\Jalali\Jalalian::forge($post->created_at)->ago()) }}
