@@ -14,8 +14,9 @@
 
 #### بخش کاربر
 
-- :black_square_button: امکان مشاهده پست‌های خود
-- :black_square_button: امکان رای مثبت یا منفی دادن به پست
+- :heavy_check_mark: امکان مشاهده پست‌های خود
+- :heavy_check_mark: امکان رای مثبت یا منفی دادن به پست
+- :black_square_button: امکان حذف پست خود​
 - :black_square_button: امکان کامنت‌گذاری زیر پست‌ها (بدون نیاز به تایید شدن)
 - :black_square_button: ایمیل ثبت‌نام
 - :black_square_button: ایمیل تایید پست الکترونیکی
@@ -30,8 +31,8 @@
 
 #### کلی
 
-- :black_square_button: مشاهده‌ی کامنت‌های زیر یک پست
-- :black_square_button: مشاهده‌ی رای‌ها
+- :heavy_check_mark: مشاهده‌ی کامنت‌های زیر یک پست
+- :heavy_check_mark: مشاهده‌ی رای‌ها
 - :black_square_button: مشاهده‌ی صفحه‌ی مربوط به هر سایت
 
 #### نیازمندی‌های فرعی
