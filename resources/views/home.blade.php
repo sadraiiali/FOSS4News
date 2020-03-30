@@ -3,7 +3,7 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <ul class="list-group text-right">
-                <li class="list-group-item" style="background-color:#343A40; color: white;">همه‌ی پست‌های شما</li>
+                <li class="list-group-item text-center" style="background-color:#343A40; color: white;">همه‌ی پست‌های شما</li>
                 @foreach($posts as $index=>$post)
                 <li class="list-group-item">
                     <div class="row post text-right mr-0 ml-0">
@@ -17,6 +17,8 @@
                                 </a>
                                 <span class="text-secondary link"><a
                                         href="{{ route('show_post', ['post' => $post]) }}">(نمایش)</a></span>
+                                <span class="text-secondary link"><a class="text-danger"
+                                        href="{{ route('post.delete', ['post' => $post]) }}">(حذف)</a></span>
                             </h2>
                             <h3 class="text-secondary">
                                 امتیاز:

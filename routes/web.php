@@ -27,6 +27,9 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/p/{post:uri}/report', 'ReportController@create')->name('post_report');
     Route::post('/p/{post:uri}/report', 'ReportController@store')->name('create_post_report');
 
+    Route::get('/p/{post:uri}/d', 'PostController@destroy')
+        ->name('post.delete');
+
     Route::post('/p/{post:uri}/c', 'CommentController@store')
         ->name('post.comment');
 

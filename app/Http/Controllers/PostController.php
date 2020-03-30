@@ -7,6 +7,7 @@ use App\Post;
 use Carbon\Carbon;
 use Exception;
 use Illuminate\Contracts\View\Factory;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Auth;
@@ -126,11 +127,21 @@ class PostController extends Controller
      * Remove the specified resource from storage.
      *
      * @param Post $post
-     * @return Response
+     * @return RedirectResponse
+     * @throws Exception
      */
     public function destroy(Post $post)
     {
-        //
+        $user = Auth::user();
+        if ($user->role == 'ADMIN' || $user->id == $post->user_id) {
+            try {
+                $post->delete();
+            } catch (Exception $e) {
+                return redirect()->back()->withErrors(['msg' => __('errors.post.Unauthorized')]);
+            }
+            return redirect()->back();
+        }
+        return redirect()->back()->withErrors(['msg' => __('errors.post.Unauthorized')]);
     }
 
     public function create_post(CreatePostRequest $request)
