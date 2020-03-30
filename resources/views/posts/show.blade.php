@@ -33,18 +33,21 @@
                 </div>
 
                 <div class="card mb-2 d-none" id="comment_section">
-                    <div class="card-body‌ text-right p-2">
-                        <div class="input-group mb-۱">
+                    <form class="card-body‌ text-right p-2" action="{{ route('post.comment',['post'=>$post]) }}"
+                          method="post">
+                        @csrf
+                        <div class="input-group mb-1">
                             <textarea type="text" class="form-control" placeholder=""
-                                   aria-label="Example text with button addon" aria-describedby="button-addon1">
+                                      name="body"
+                                      aria-label="" aria-describedby="send-commit">
                             </textarea>
                             <div class="input-group-prepend">
-                                <button class="btn btn-outline-secondary" type="button" id="button-addon1">
+                                <button class="btn btn-outline-secondary" type="submit" id="send-commit">
                                     بفرست
                                 </button>
                             </div>
                         </div>
-                    </div>
+                    </form>
                 </div>
 
                 @if(sizeof($comments) == 0 )

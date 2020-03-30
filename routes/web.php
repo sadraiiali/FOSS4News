@@ -26,7 +26,9 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/new', 'PostController@create_post')->name('create_post');
     Route::get('/p/{post:uri}/report', 'ReportController@create')->name('post_report');
     Route::post('/p/{post:uri}/report', 'ReportController@store')->name('create_post_report');
-    Route::post('/p/{post:uri}/comment', 'CommentController@store')->name('create_comment');
+
+    Route::post('/p/{post:uri}/c', 'CommentController@store')
+        ->name('post.comment');
 
     Route::get('/p/{post:uri}/v/{reaction}', 'VoteController@votePost')
         ->where('reaction', '[0-1]')

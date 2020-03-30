@@ -32,13 +32,12 @@ class CommentController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param Request $request
-     * @return Response
+     * @param CreateCommentRequest $request
+     * @return array
      */
     public function store(CreateCommentRequest $request)
     {
-        dd($request->body);
-        return [sd];
+        return [$request->body];
     }
 
     /**
