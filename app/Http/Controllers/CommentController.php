@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Comment;
 use App\Http\Requests\CreateCommentRequest;
+use App\Post;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 
@@ -44,12 +45,16 @@ class CommentController extends Controller
         return redirect()->back()->withErrors(['msg' => __('errors.comment.problem')]);
     }
 
+    /**
+     * Store new Comment for Post object.
+     * 
+     * @param Post $post
      * @param CreateCommentRequest $request
-     * @return array
+     * @return RedirectResponse
      */
-    public function store(CreateCommentRequest $request)
+    public function commentPost(Post $post, CreateCommentRequest $request)
     {
-        return [$request->body];
+        return $this->store($post, $request->body);
     }
 
     /**
