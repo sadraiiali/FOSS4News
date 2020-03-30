@@ -32,6 +32,18 @@ class CommentController extends Controller
     /**
      * Store a newly created resource in storage.
      *
+     * @param String $comment
+     * @param dynamic $commentable
+     * @return RedirectResponse
+     */
+    public function store($commentable, String $comment)
+    {
+        if ($commentable->comment($comment)) {
+            return redirect()->back();
+        }
+        return redirect()->back()->withErrors(['msg' => __('errors.comment.problem')]);
+    }
+
      * @param CreateCommentRequest $request
      * @return array
      */
