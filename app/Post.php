@@ -3,11 +3,12 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Support\Str;
 
 class Post extends Model
 {
-    use Voteable, Commentable;
+    use Voteable, Commentable, SoftDeletes;
 
     protected $guarded = [];
 

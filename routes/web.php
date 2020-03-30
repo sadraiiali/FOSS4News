@@ -12,7 +12,7 @@ use Illuminate\Support\Facades\Route;
 | routes are loaded by the RouteServiceProvider within a group which
 | contains the "web" middleware group. Now create something great!
 |
-*/
+ */
 
 Route::get('/', 'PostController@index')->name('all_posts');
 Route::get('/today', 'PostController@today')->name('today');
@@ -30,11 +30,12 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/p/{post:uri}/c', 'CommentController@commentPost')
         ->name('post.comment');
 
+    Route::get('/p/{post:uri}/d', 'PostController@destroy')
+        ->name('post.delete');
+
     Route::get('/p/{post:uri}/v/{reaction}', 'VoteController@votePost')
         ->where('reaction', '[0-1]')
         ->name('post.vote');
 });
 
-
 Auth::routes();
-
