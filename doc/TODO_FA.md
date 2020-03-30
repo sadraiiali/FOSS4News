@@ -16,8 +16,8 @@
 
 - :heavy_check_mark: امکان مشاهده پست‌های خود
 - :heavy_check_mark: امکان رای مثبت یا منفی دادن به پست
-- :black_square_button: امکان حذف پست خود​
-- :black_square_button: امکان کامنت‌گذاری زیر پست‌ها (بدون نیاز به تایید شدن)
+- :heavy_check_mark: امکان حذف پست خود​
+- :heavy_check_mark: امکان کامنت‌گذاری زیر پست‌ها (بدون نیاز به تایید شدن)
 - :black_square_button: ایمیل ثبت‌نام
 - :black_square_button: ایمیل تایید پست الکترونیکی
 - :black_square_button: ایمیل فراموشی رمزعبور 	 	 	
