@@ -3,7 +3,7 @@
 namespace App;
 
 use App\Vote;
-use Auth;
+use Illuminate\Support\Facades\Auth;
 
 trait Voteable
 {
@@ -13,78 +13,83 @@ trait Voteable
         return $this->morphMany(Vote::class, 'voteable');
     }
 
+    /**
+     * function to check if user already voted
+     *
+     * @param User
+     * @return boolean
+     */
     public function checkIfVoted(User $user)
     {
-        /**
-         * function to check if user already voted
-         *
-         * @param User
-         * @return boolean
-         */
-
         return $this->votes()->where('user_id', $user->id)->exists();
     }
 
+    /**
+     * function to get user's old vote
+     *
+     * @param User
+     * @return Vote
+     */
     public function getVote(User $user)
     {
-        /**
-         * function to get user's old vote
-         *
-         * @param User
-         * @return Vote
-         */
-
         return $this->votes()->where('user_id', $user->id)->first();
     }
 
+    /**
+     * function to get all points by Sum UpVotes and Subtract DownVotes
+     *
+     * @return int
+     */
     public function getPointsAttribute()
     {
-        /**
-         * function to get all points by Sum UPvotes and Subtract DOWNvotes
-         *
-         * @return int
-         */
-
         $points = 0;
         foreach ($this->votes as $vote) {
             if ($vote->type == 'UP') {
                 $points = $points + 1;
-            } 
-            elseif ($vote->type == 'DOWN') {
+            } elseif ($vote->type == 'DOWN') {
                 $points = $points - 1;
             }
         }
         return $points;
     }
 
+    /**
+     * function to submit or change user's vote
+     *
+     * @param string can be 0 or DOWN or 1 or UP
+     * @return boolean
+     */
     public function vote(string $vote_type)
     {
-        /**
-         * function to submit or change user's vote
-         * 
-         * @param string
-         * @return boolean
-         */
+        if (!($vote_type == 'UP' || $vote_type == '1' ||
+            $vote_type == 'DOWN' || $vote_type == '0')) {
+            return false;
+        }
 
-         // check if user logged in
         if (Auth::user() != null) {
             $user = Auth::user();
 
-            // if user not already voted add a new vote to database
             if (!$this->checkIfVoted($user)) {
-                $vote = new Vote();
-                $vote->user_id = Auth::user()->id;
-                $vote->type = $vote_type;
-                $this->votes()->save($vote);
-                return true;
-            }
-            // if user already voted, change the old vote 
-            else {
+                $this->votes()->create([
+                    'user_id' => Auth::user()->id,
+                    'type' => $vote_type
+                ]);
+
+            } else {
                 $vote = $this->getVote($user);
-                $vote->type = $vote_type;
-                $vote->save();
-                return true;
+                if ($vote->type != $vote_type) {
+                    $vote->type = $vote_type;
+                    $vote->save();
+                }
             }
+
+            if ($vote_type == 'UP' || $vote_type == '1') {
+                $this->increment('likes');
+            } else if ($vote_type == 'DOWN' || $vote_type == '0') {
+                $this->increment('dislikes');
+            }
+
+            return true;
         }
         return false;
     }

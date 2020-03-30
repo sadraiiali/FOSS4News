@@ -150,27 +150,4 @@ class PostController extends Controller
         return redirect('today');
     }
 
-
-    public function vote(Post $post, int $reaction) {
-        /**
-         * function to handle voting and add vote to database
-         *
-         * TODO: create validation for this
-         * NOTE: reaction can have just to values: 1 (Upvote), 2 (DownVote)
-         *
-         * @param Post
-         * @param int
-         * @return Response
-         */
-
-        if ( $post->vote($reaction) ) {
-            // redirect back if voted successfully
-            return redirect()->back();
-        }
-        else {
-            // redirect back with an error message if the operation was unsuccessful
-            return redirect()->back()->withErrors(['msg', 'Hmm... Something Went Wrong!']);;
-        }
-    }
-
 }

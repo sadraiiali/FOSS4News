@@ -17,7 +17,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', 'PostController@index')->name('all_posts');
 Route::get('/today', 'PostController@today')->name('today');
 
-Route::get('/p/{post:uri}','PostController@show')->name('show_post');
+Route::get('/p/{post:uri}', 'PostController@show')->name('show_post');
 
 // User Space
 Route::middleware(['auth'])->group(function () {
@@ -27,7 +27,10 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/p/{post:uri}/report', 'ReportController@create')->name('post_report');
     Route::post('/p/{post:uri}/report', 'ReportController@store')->name('create_post_report');
     Route::post('/p/{post:uri}/comment', 'CommentController@store')->name('create_comment');
-    Route::get('/p/{post:uri}/vote/{reaction}', 'PostController@vote')->name('post.vote');
+
+    Route::get('/p/{post:uri}/v/{reaction}', 'VoteController@votePost')
+        ->where('reaction', '[0-1]')
+        ->name('post.vote');
 });
 
 
