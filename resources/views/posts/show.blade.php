@@ -41,7 +41,6 @@
                             <div class="input-group-prepend">
                                 <button class="btn btn-outline-secondary" type="button" id="button-addon1">
                                     بفرست
-
                                 </button>
                             </div>
                         </div>

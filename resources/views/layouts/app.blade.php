@@ -78,6 +78,18 @@
             </div>
         </nav>
         <main class="py-4 bg-light">
+
+            @if ($errors->any())
+                @foreach ($errors->all() as $error)
+                    <div class="alert alert-danger alert-dismissible text-center fade show" role="alert">
+                        {{ $error }}
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                @endforeach
+            @endif
+
             @yield('content')
         </main>
         <footer class="bg-light">
