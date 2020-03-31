@@ -4,6 +4,7 @@
 
 use App\Post;
 use App\User;
+use App\Site;
 use Faker\Generator as Faker;
 use Illuminate\Support\Str;
 
