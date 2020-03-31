@@ -31,7 +31,7 @@ class SiteController extends Controller
         }
 
         return view('site_page', 
-            ['posts' => $posts, 'page' => $request->page, 'is_end' => $is_end]
+            ['posts' => $posts, 'page' => $request->page, 'is_end' => $is_end, 'siteName' => $site->domain]
         );
     }
 
