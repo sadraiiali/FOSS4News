@@ -22,6 +22,11 @@ class Post extends Model
         return $this->belongsTo(User::class);
     }
 
+    public function site()
+    {
+        return $this->belongsTo(Site::class);
+    }
+
     /**
      * Find site name with regex and put it in $all_post_with_user
      */
