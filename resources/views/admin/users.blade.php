@@ -16,6 +16,32 @@
 
     </div>
 
+    @if($last_page !=1 )
+        <div class="row justify-content-center">
+            <nav>
+                <ul class="pagination mb-4 m-0 p-0">
+                    <li class="page-item">
+                        <a class="page-link" href="?page={{($current_page > 1)? $current_page-1:'1'}}"
+                           aria-label="Previous">
+                            <span aria-hidden="true">&laquo;</span>
+                        </a>
+                    </li>
+                    @for($i=1 ; $i <= $last_page ; $i++)
+                        <li class="page-item {{($i == $current_page)? 'active':''}}">
+                            <a class="page-link" href="?page={{$i}}">{{num_to_fa($i)}}</a>
+                        </li>
+                    @endfor
+
+                    <li class="page-item">
+                        <a class="page-link" href="?page={{($current_page < $last_page)? $current_page+1:$last_page}}"
+                           aria-label="Next">
+                            <span aria-hidden="true">&raquo;</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    @endif
 
     <div class="row m-0 px-3 justify-content-center">
         @foreach($users as $user)

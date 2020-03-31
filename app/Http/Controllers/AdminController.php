@@ -14,13 +14,17 @@ class AdminController extends Controller
 
     public function showUsers()
     {
-        $users = User::orderBy('role', 'DESC')->orderBy('created_at', 'DESC')->paginate(20);
+        $users = User::orderBy('role', 'DESC')->orderBy('created_at', 'DESC')->paginate(30);
         $users_count = $users->toArray()['total'];
+        $last_page = $users->toArray()['last_page'];
+        $current_page = $users->toArray()['current_page'];
         $admins_count = User::where(['role' => 'ADMIN'])->count();
         return view('admin.users', [
             'users' => $users,
             'admins_count' => $admins_count,
             'users_count' => $users_count,
+            'last_page' => $last_page,
+            'current_page' => $current_page,
         ]);
     }
 
