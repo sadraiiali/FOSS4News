@@ -21,7 +21,7 @@
                         </span>
                         . {{ $post->title }}
                     </a>
-                    <span class="text-secondary link">({{ $post -> siteName() }})</span>
+                    <span class="text-secondary link">(<a href="{{ route('show.site.posts', $post->site->domain) }}">{{ $post -> site -> domain }}</a>)</span>
                 </h2>
                 <h3 class="text-secondary">
                     {{ num_to_fa($post->getPointsAttribute()) }}
