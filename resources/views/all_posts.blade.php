@@ -50,8 +50,8 @@
             <h2 class="text-secondary">شما تمام صفحات را دیدید :) <span>(<a href="?page=1">صغحه اول</a>)</span></h2>
         </div>
     @elseif(sizeof($posts)==0)
-        <div class="row more ml-0">
-            <h2 class="text-secondary">¯\_( ͡° ͜ʖ ͡°)_/¯ پستی نبود!</h2>
+        <div class="row more ml-0 mr-0 justify-content-center">
+            <h2 class="text-secondary ">¯\_( ͡° ͜ʖ ͡°)_/¯</h2>
         </div>
     @endif
 @endsection
