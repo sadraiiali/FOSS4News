@@ -42,7 +42,13 @@ Route::middleware(['auth'])->group(function () {
 // Admin Space
 Route::middleware(['auth', 'admin'])->prefix('admin')->group(function () {
     Route::get('/', 'AdminController@index')->name('admin.home');
+    Route::get('/users', 'AdminController@showUsers')->name('admin.users');
+    Route::get('/users/{user:id}/d', 'AdminController@deleteUser')->name('admin.users.delete');
+    Route::get('/users/{user:id}/a', 'AdminController@makeAdmin')->name('admin.users.make_admin');
 
+    Route::get('/posts', 'AdminController@index')->name('admin.posts');
+    Route::get('/reports', 'AdminController@index')->name('admin.reports');
+    Route::get('/pages', 'AdminController@index')->name('admin.pages');
 });
 
 Auth::routes();
