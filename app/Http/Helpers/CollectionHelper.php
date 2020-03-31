@@ -36,10 +36,10 @@ class CollectionHelper
      * @param  array  $options
      * @return \Illuminate\Pagination\LengthAwarePaginator
      */
-    protected static function paginator($items, $count, $perPage, $currentPage, $options)
+    protected static function paginator($items, $total, $perPage, $currentPage, $options)
     {
         return Container::getInstance()->makeWith(LengthAwarePaginator::class, compact(
-            'items', 'count', 'perPage', 'currentPage', 'options'
+            'items', 'total', 'perPage', 'currentPage', 'options'
         ));
     }
 }
