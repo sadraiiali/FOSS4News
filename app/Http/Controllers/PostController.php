@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\CreatePostRequest;
 use App\Post;
+use App\Site;
 use Carbon\Carbon;
 use Exception;
 use Illuminate\Contracts\View\Factory;
@@ -175,6 +176,7 @@ class PostController extends Controller
                 'title' => $request->title,
                 'body' => $request->body,
                 'link' => $request->link,
+                'site_id' => $siteId,
             ]);
             return redirect('/')->with('success', 'پست شما ساخته شد');
         } catch (Exception $e) {
