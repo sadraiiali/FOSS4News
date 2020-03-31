@@ -24,10 +24,10 @@
 
 #### بخش مدیر
 
+- :heavy_check_mark: حذف یک پست
 - :black_square_button: مشاهده لیست کاربران
-- :black_square_button: حذف یک پست
-- :black_square_button: مشاهده‌ی گزارش‌ها
 - :black_square_button: حذف یک کاربر	  	
+- :black_square_button: مشاهده‌ی گزارش‌ها
 
 #### کلی
 
