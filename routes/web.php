@@ -38,4 +38,11 @@ Route::middleware(['auth'])->group(function () {
         ->name('post.vote');
 });
 
+
+// Admin Space
+Route::middleware(['auth', 'admin'])->prefix('admin')->group(function () {
+    Route::get('/', 'AdminController@index')->name('admin.home');
+
+});
+
 Auth::routes();

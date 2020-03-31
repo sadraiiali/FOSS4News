@@ -17,7 +17,7 @@
 {{--    <link rel="dns-prefetch" href="//fonts.gstatic.com">--}}
 {{--    <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">--}}
 
-    <!-- Styles -->
+<!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 </head>
 
@@ -62,7 +62,14 @@
                             </a>
 
                             <div class="dropdown-menu dropdown-menu-left text-center" aria-labelledby="navbarDropdown">
+                                @if(Auth::user()->‌isAdmin())
+                                    <a class="dropdown-item bg-danger text-white" href="{{ route('admin.home') }}">
+                                        {{ __('general.Admin Page') }}
+                                    </a>
+                                @endif
+
                                 <a href="{{ route('home') }}" class="dropdown-item">{{__('general.My Posts')}}</a>
+
                                 <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
                                                             document.getElementById('logout-form').submit();">
                                     {{ __('general.Logout') }}
