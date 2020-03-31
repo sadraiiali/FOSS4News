@@ -159,6 +159,17 @@ class PostController extends Controller
     public function create_post(CreatePostRequest $request)
     {
         try {
+            // check if site already exists assign $siteId to intended site id
+            $siteName = $this->getSiteName($request->link);
+            $siteId = Site::Where('domain', $siteName) -> first() -> id;
+        } catch (Exception $e) {
+            // if site already not exists, create it and assign $siteId to intended site id
+            $siteId = Site::create(
+                ['domain' => $siteName]
+            ) -> id;
+        }
+
+        try {
             Auth::user()->posts()->create([
                 'uri' => Post::findUri($request->title),
                 'title' => $request->title,
