@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Comment;
 use App\Http\Requests\CreateCommentRequest;
 use App\Post;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 
@@ -47,7 +48,7 @@ class CommentController extends Controller
 
     /**
      * Store new Comment for Post object.
-     * 
+     *
      * @param Post $post
      * @param CreateCommentRequest $request
      * @return RedirectResponse

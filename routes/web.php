@@ -46,7 +46,9 @@ Route::middleware(['auth', 'admin'])->prefix('admin')->group(function () {
     Route::get('/users/{user:id}/d', 'AdminController@deleteUser')->name('admin.users.delete');
     Route::get('/users/{user:id}/a', 'AdminController@makeAdmin')->name('admin.users.make_admin');
 
-    Route::get('/posts', 'AdminController@index')->name('admin.posts');
+    Route::get('/posts', 'AdminController@showPosts')->name('admin.posts');
+    Route::get('/posts/{post:id}/d', 'AdminController@deletePost')->name('admin.posts.delete');
+
     Route::get('/reports', 'AdminController@index')->name('admin.reports');
     Route::get('/pages', 'AdminController@index')->name('admin.pages');
 });
