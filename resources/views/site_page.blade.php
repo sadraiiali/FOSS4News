@@ -10,6 +10,9 @@
         </div>
     @endif
 
+    <div class="card-header" style="background-color:grey; color:black">
+        <h4 class="text-center">همه‌ی پست‌های سایت «<a href="http://{{ $siteName }}" style="color:darkblue;" target="_blank">{{ $siteName }}</a>»</h4>
+    </div><br />
 
     @foreach($posts as $index=>$post)
         <div class="row post text-right mr-0 ml-0">
@@ -21,7 +24,7 @@
                         </span>
                         . {{ $post->title }}
                     </a>
-                    <span class="text-secondary link">({{ $post -> site -> site_name }})</span>
+                    <span class="text-secondary link">({{ $post -> site -> domain }})</span>
                 </h2>
                 <h3 class="text-secondary">
                     {{ num_to_fa($post->getPointsAttribute()) }}
