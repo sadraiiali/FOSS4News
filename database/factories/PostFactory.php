@@ -16,5 +16,6 @@ $factory->define(Post::class, function (Faker $faker) {
         'title' => $title,
         'body' => $faker->text(100),
         'link' => $faker->url,
+        'site_id' => Site::all()->random()->id,
     ];
 });
