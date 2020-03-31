@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Helpers\CollectionHelper;
 use App\Site;
 use Illuminate\Http\Request;
 
@@ -10,11 +11,28 @@ class SiteController extends Controller
     /**
      * Display a listing of the resource.
      *
+     * @param \App\Site $site
+     * @param \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Site $site, Request $request)
     {
-        //
+        $page = 1;
+        if (isset($request['page'])) {
+            $page = $request['page'];
+        }
+
+        $posts = $site->posts;
+        $posts = CollectionHelper::paginate($posts, $posts->count(), 30);
+
+        $is_end = false;
+        if ($posts->lastPage() == $page) {
+            $is_end = true;
+        }
+
+        return view('site_page', 
+            ['posts' => $posts, 'page' => $request->page, 'is_end' => $is_end]
+        );
     }
 
     /**
