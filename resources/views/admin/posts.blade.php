@@ -56,14 +56,14 @@
                     <span class="badge badge-dark">{{num_to_fa($post->comments_count)}}</span>
                     <br>
                     <span class="badge badge-dark">{{$post->User->name}}</span>
-
+                    <br>
 
                 </div>
 
                 @if(!$post->isTrashed())
                     <div class="card-body px-1 p-0 justify-content-center row">
                         <a href="{{route('admin.posts.delete',['post'=>$post])}}" class="text-danger pl-1 pr-1">حذف</a>
-                        <a href="" class="text-secondary pl-1 pr-1">گزارشات</a>
+                        <a href="{{route('admin.reports.post_id', ['post'=>$post])}}" class="text-secondary pl-1 pr-1">گزارشات</a>
                     </div>
                 @else
                     <div class="card-body px-1 p-0 bg-dark  text-center text-white justify-content-center">

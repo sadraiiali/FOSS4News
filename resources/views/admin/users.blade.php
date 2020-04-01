@@ -46,13 +46,13 @@
     <div class="row m-0 px-3 justify-content-center">
         @foreach($users as $user)
             <div class="card m-1 {{ ($user->role=='ADMIN')? 'border-success':'border-primary' }}"
-                 style="min-width: 125px;">
+                 style="min-width: 100px;">
                 <div class="card-header text-center">
                     {{$user->name}}
                 </div>
                 <div class="card-body px-1 p-0 justify-content-center row">
                     <a href="{{route('admin.users.delete',['user'=>$user])}}" class="text-danger pl-1 pr-1">حذف</a>
-                    <a href="" class="text-secondary pl-1 pr-1">گزارشات</a>
+{{--                    <a href="" class="text-secondary pl-1 pr-1">گزارشات</a>--}}
                     @if($user->role!='ADMIN')
                         <a href="{{route('admin.users.make_admin',['user'=>$user])}}"
                            class="text-dark pl-1 pr-1">ارتقا</a>

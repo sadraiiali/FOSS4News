@@ -17,22 +17,6 @@
                 <span class="text-danger pl-1 pr-1">{{num_to_fa($post_reports_count)}}</span>
             </div>
         </div>
-        <div class="card m-1 border-primary">
-            <a href="{{route('admin.reports.comment')}}">
-                <div class="card-header text-dark">کامنت‌ها</div>
-            </a>
-            <div class="card-body pr-1 pl-1 p-0 justify-content-center row">
-                <span class="text-danger pl-1 pr-1">{{num_to_fa($comment_reports_count)}}</span>
-            </div>
-        </div>
-        <div class="card m-1 border-primary">
-            <a href="{{route('admin.reports.site')}}">
-                <div class="card-header text-dark">سایت‌ها</div>
-            </a>
-            <div class="card-body pr-1 pl-1 p-0 justify-content-center row">
-                <span class="text-danger pl-1 pr-1">{{num_to_fa($site_reports_count)}}</span>
-            </div>
-        </div>
         <div class="card m-1 border-dark">
             <div class="card-header">پاک شده‌ها</div>
             <div class="card-body pr-1 pl-1 p-0 justify-content-center row">

@@ -55,6 +55,8 @@ Route::middleware(['auth', 'admin'])->name('admin.')->prefix('admin')->group(fun
         Route::get('/{report}/d', 'AdminController@deleteReport')->name('delete');
 
         Route::get('/post', 'AdminController@showPostReports')->name('post');
+        Route::get('/post/{post:uri}', 'AdminController@showPostReports')->name('post_id');
+
         Route::get('/comment', 'AdminController@showReports')->name('comment');
 
         Route::get('/site', 'AdminController@showReports')->name('site');

@@ -8,6 +8,7 @@ use App\Report;
 use App\Site;
 use App\User;
 use Exception;
+use phpDocumentor\Reflection\Types\Null_;
 
 class AdminController extends Controller
 {
@@ -100,9 +101,13 @@ class AdminController extends Controller
         ]);
     }
 
-    public function showPostReports()
+    public function showPostReports(Post $post = null)
     {
-        $reports = Report::where(['reportable_type' => Post::class])->paginate(30);
+        if ($post == null) {
+            $reports = Report::where(['reportable_type' => Post::class])->paginate(30);
+        } else {
+            $reports = $post->reports()->paginate(30);
+        }
         return view('admin.report.post', [
             'reports' => $reports,
             'reports_count' => $reports->toArray()['total'],
@@ -111,7 +116,8 @@ class AdminController extends Controller
         ]);
     }
 
-    public function deleteReport(Report $report)
+    public
+    function deleteReport(Report $report)
     {
         try {
             $report->delete();
@@ -121,7 +127,8 @@ class AdminController extends Controller
         }
     }
 
-    public function makeAdmin(User $user)
+    public
+    function makeAdmin(User $user)
     {
         try {
             $user->update(['role' => 'ADMIN']);
