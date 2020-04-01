@@ -24,4 +24,5 @@ return [
     'My Posts' => 'پست‌های من',
     'Admin Page' => 'صفحه‌ی مدیریت',
     'Delete' => 'حذف',
+    'Reset Password'=> 'بازیابی  گذرواژه'
 ];

@@ -163,6 +163,7 @@ class PostController extends Controller
             // check if site already exists assign $siteId to intended site id
             $siteName = Post::findSiteName($request->link);
             if ($siteName == '') {
+                // TODO: error handling problem
                 return view('posts.create', ['error' => true]);
             }
             $siteId = Site::Where('domain', $siteName)->first()->id;
