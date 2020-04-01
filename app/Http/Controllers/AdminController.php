@@ -57,17 +57,12 @@ class AdminController extends Controller
             ->orderBy('created_at', 'DESC')
             ->paginate(30);
 
-        $posts_count = $posts->toArray()['total'];
-        $last_page = $posts->toArray()['last_page'];
-        $current_page = $posts->toArray()['current_page'];
-        $trashed_count = Post::onlyTrashed()->count();
-
         return view('admin.posts', [
             'posts' => $posts,
-            'posts_count' => $posts_count,
-            'last_page' => $last_page,
-            'current_page' => $current_page,
-            'trashed_count' => $trashed_count,
+            'posts_count' => $posts->toArray()['total'],
+            'last_page' => $posts->toArray()['last_page'],
+            'current_page' => $posts->toArray()['current_page'],
+            'trashed_count' => Post::onlyTrashed()->count(),
         ]);
     }
 
@@ -116,8 +111,7 @@ class AdminController extends Controller
         ]);
     }
 
-    public
-    function deleteReport(Report $report)
+    public function deleteReport(Report $report)
     {
         try {
             $report->delete();
@@ -127,8 +121,34 @@ class AdminController extends Controller
         }
     }
 
-    public
-    function makeAdmin(User $user)
+    public function showComments(Post $post = null)
+    {
+        if ($post == null) {
+            $comments = Comment::with('user')
+                ->orderBy('created_at', 'DESC')
+                ->paginate(30);
+        } else {
+            $comments = $post->comments()->paginate(30);
+        }
+        return view('admin.comments', [
+            'comments' => $comments,
+            'comments_count' => $comments->toArray()['total'],
+            'last_page' => $comments->toArray()['last_page'],
+            'current_page' => $comments->toArray()['current_page'],
+        ]);
+    }
+
+    public function deleteComment(Comment $comment)
+    {
+        try {
+            $comment->delete();
+            return redirect()->back();
+        } catch (Exception $e) {
+            return redirect()->back()->withErrors(['msg' => __('errors.admin.Delete Comment')]);
+        }
+    }
+
+    public function makeAdmin(User $user)
     {
         try {
             $user->update(['role' => 'ADMIN']);

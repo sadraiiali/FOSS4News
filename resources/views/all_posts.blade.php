@@ -36,14 +36,18 @@
                        href="{{route('show_post',['post'=>$post])}}">
                         {{__('general.Comment')}}</a> |
 
-                    <a class="text-secondary"
-                       href="{{ route('post_report',['post'=>$post])}}">
-                        گزارش
-                    </a>
-
                     @if(Auth::user()!=null && Auth::user()->‌isAdmin())
+                        <a class="text-dark"
+                           href="{{ route('admin.reports.post_id',['post'=>$post])}}">
+                            گزارشات
+                        </a>
                         |<a class="text-danger" href="{{ route('post.delete',['post'=>$post]) }}">
                             {{ __('general.Delete') }}
+                        </a>
+                    @else
+                        <a class="text-secondary"
+                           href="{{ route('post_report',['post'=>$post])}}">
+                            گزارش
                         </a>
                     @endif
                 </h3>

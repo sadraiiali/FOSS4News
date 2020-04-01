@@ -57,13 +57,11 @@ Route::middleware(['auth', 'admin'])->name('admin.')->prefix('admin')->group(fun
         Route::get('/post', 'AdminController@showPostReports')->name('post');
         Route::get('/post/{post:uri}', 'AdminController@showPostReports')->name('post_id');
 
-        Route::get('/comment', 'AdminController@showReports')->name('comment');
-
-        Route::get('/site', 'AdminController@showReports')->name('site');
     });
 
+    Route::get('/comments', 'AdminController@showComments')->name('comments');
+    Route::get('/comments/{comment}', 'AdminController@deleteComment')->name('comments.delete');
 
-    Route::get('/pages', 'AdminController@index')->name('pages');
 });
 
 Auth::routes();

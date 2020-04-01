@@ -23,7 +23,12 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $posts = Auth::user()->posts; // get all posts of user
-        return view('home', ['posts' => $posts]);
+        $posts = Auth::user()->posts()->paginate(30); // get all posts of user
+        return view('home', [
+            'posts' => $posts,
+            'posts_count' => $posts->toArray()['total'],
+            'last_page' => $posts->toArray()['last_page'],
+            'current_page' => $posts->toArray()['current_page'],
+        ]);
     }
 }
