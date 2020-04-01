@@ -2,6 +2,7 @@
 
 namespace App;
 
+use Exception;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Support\Str;
@@ -29,7 +30,12 @@ class Post extends Model
     {
         $site_name_pattern = '/([a-zA-Z0-9]([a-zA-Z0-9\-]{0,65}[a-zA-Z0-9])?\.)+[a-zA-Z]{2,6}/m';
         preg_match_all($site_name_pattern, $this->link, $matches);
-        return $matches[0][0];
+        try {
+            $out = $matches[0][0];
+        } catch (Exception $e) {
+            $out = ' ';
+        }
+        return $out;
 
     }
 
@@ -43,6 +49,11 @@ class Post extends Model
             $find = Post::where('uri', $uri)->get()->count();
         }
         return $uri;
+    }
+
+    public function isTrashed()
+    {
+        return $this->deleted_at != null;
     }
 
 }

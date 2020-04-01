@@ -21,6 +21,7 @@ class CreateReportsTable extends Migration
             $table->unsignedBigInteger('user_id');
             $table->enum('reason', Report::$reasons);
             $table->text('body')->nullable();
+            $table->softDeletes('deleted_at', 0);
             $table->timestamps();
         });
     }

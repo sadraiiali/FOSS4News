@@ -6,6 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class Comment extends Model
 {
+    use Commentable;
+
     protected $guarded = [];
 
     public function comments()

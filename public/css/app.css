@@ -1,4 +1,4 @@
-@import url(https://fonts.googleapis.com/css?family=Nunito);@charset "UTF-8";
+@charset "UTF-8";
 
 /*!
  * Bootstrap v4.4.1 (https://getbootstrap.com/)
@@ -10887,6 +10887,10 @@ a.text-dark:focus {
   src: url(/fonts/Vazir.eot?e8a4440ddb78439846838a8944aa3254);
   src: url(/fonts/Vazir.eot?e8a4440ddb78439846838a8944aa3254) format("embedded-opentype"), url(/fonts/Vazir.woff?52d6a53b926ea6bcfd19c6a71dce08e8) format("woff"), url(/fonts/Vazir.ttf?6dd11839132986bc24cacba2d81c9372) format("truetype");
   font-weight: normal;
+}
+
+.ltr {
+  direction: ltr !important;
 }
 
 body {

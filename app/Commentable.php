@@ -4,6 +4,7 @@ namespace App;
 
 use App\Comment;
 use Illuminate\Support\Facades\Auth;
+use function Sodium\increment;
 
 trait Commentable
 {
@@ -28,6 +29,7 @@ trait Commentable
                     'body' => $comment,
                 ]
             );
+            $this->increment('comments_count');
             return true;
         }
         return false;

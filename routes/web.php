@@ -40,8 +40,27 @@ Route::middleware(['auth'])->group(function () {
 
 
 // Admin Space
-Route::middleware(['auth', 'admin'])->prefix('admin')->group(function () {
-    Route::get('/', 'AdminController@index')->name('admin.home');
+Route::middleware(['auth', 'admin'])->name('admin.')->prefix('admin')->group(function () {
+    Route::get('/', 'AdminController@index')->name('home');
+    Route::get('/users', 'AdminController@showUsers')->name('users');
+    Route::get('/users/{user:id}/d', 'AdminController@deleteUser')->name('users.delete');
+    Route::get('/users/{user:id}/a', 'AdminController@makeAdmin')->name('users.make_admin');
+
+    Route::get('/posts', 'AdminController@showPosts')->name('posts');
+    Route::get('/posts/{post:id}/d', 'AdminController@deletePost')->name('posts.delete');
+
+    Route::name('reports.')->prefix('reports')->group(function () {
+        Route::get('/all', 'AdminController@showAllReports')->name('all');
+
+        Route::get('/{report}/d', 'AdminController@deleteReport')->name('delete');
+
+        Route::get('/post', 'AdminController@showPostReports')->name('post');
+        Route::get('/post/{post:uri}', 'AdminController@showPostReports')->name('post_id');
+
+    });
+
+    Route::get('/comments', 'AdminController@showComments')->name('comments');
+    Route::get('/comments/{comment}', 'AdminController@deleteComment')->name('comments.delete');
 
 });
 

@@ -22,5 +22,6 @@ return [
     'Logout' => 'خروج',
     'Comment' => 'نظر',
     'My Posts' => 'پست‌های من',
-    'Admin Page' => 'صفحه‌ی مدیریت'
+    'Admin Page' => 'صفحه‌ی مدیریت',
+    'Delete' => 'حذف',
 ];
