@@ -23,8 +23,6 @@ services:
     container_name: mysql
     restart: unless-stopped
     tty: true
-    ports:
-      - "3306:3306"
     environment:
       MYSQL_DATABASE: homestead
       MYSQL_USER: homestead
@@ -42,8 +40,6 @@ services:
     container_name: php
     volumes:
       - ./src:/var/www/html
-    ports:
-      - "9000:9000"
     networks:
       - laravel
 
