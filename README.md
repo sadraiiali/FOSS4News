@@ -25,7 +25,15 @@ before run this project you need to install docker & docker-compose.
 
     `./RunFirstTime.sh`
 
+5. Create your account then login with default Admin then make your account admin! (you can remove default users)
+   
+    `Default Admin : admin@admin.com:adminadmin`
+    
+    `Default User : test@test.com:testtest`
+    
     Done :)
+    
+    
 
 ## License
 
