@@ -35,9 +35,10 @@ class AdminController extends Controller
 
     public function showPosts()
     {
-        $posts = Post::with(array('user' => function ($query) {
-            $query->select('name');
-        }))
+        $posts = Post::withTrashed()
+            ->with(array('user' => function ($query) {
+                $query->select('name');
+            }))
             ->orderBy('created_at', 'DESC')
             ->paginate(30);
 

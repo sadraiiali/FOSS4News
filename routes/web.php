@@ -50,6 +50,7 @@ Route::middleware(['auth', 'admin'])->prefix('admin')->group(function () {
     Route::get('/posts/{post:id}/d', 'AdminController@deletePost')->name('admin.posts.delete');
 
     Route::get('/reports', 'AdminController@index')->name('admin.reports');
+
     Route::get('/pages', 'AdminController@index')->name('admin.pages');
 });
 

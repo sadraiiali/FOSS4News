@@ -44,7 +44,7 @@
 
     <div class="row m-0 px-3 justify-content-center">
         @foreach($posts as $post)
-            <div class="card m-1 border-primary"
+            <div class="card m-1 {{ ($post->isTrashed())? 'border-dark': 'border-primary'}}"
                  style="min-width: 125px;">
                 <div class="card-header text-center">
 
@@ -60,10 +60,17 @@
 
                 </div>
 
-                <div class="card-body px-1 p-0 justify-content-center row">
-                    <a href="{{route('admin.posts.delete',['post'=>$post])}}" class="text-danger pl-1 pr-1">حذف</a>
-                    <a href="" class="text-secondary pl-1 pr-1">گزارشات</a>
-                </div>
+                @if(!$post->isTrashed())
+                    <div class="card-body px-1 p-0 justify-content-center row">
+                        <a href="{{route('admin.posts.delete',['post'=>$post])}}" class="text-danger pl-1 pr-1">حذف</a>
+                        <a href="" class="text-secondary pl-1 pr-1">گزارشات</a>
+                    </div>
+                @else
+                    <div class="card-body px-1 p-0 bg-dark  text-center text-white justify-content-center">
+                        <span>حذف شده</span>
+                    </div>
+                @endif
+
             </div>
 
         @endforeach

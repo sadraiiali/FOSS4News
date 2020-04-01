@@ -45,4 +45,9 @@ class Post extends Model
         return $uri;
     }
 
+    public function isTrashed()
+    {
+        return $this->deleted_at != null;
+    }
+
 }
