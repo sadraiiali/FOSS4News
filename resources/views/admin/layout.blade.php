@@ -5,7 +5,6 @@
         <a class="text-white pr-1 pl-1" href="{{ route('admin.users') }}">کاربران</a>
         <a class="text-white pr-1 pl-1" href="{{ route('admin.posts') }}">پست‌ها</a>
         <a class="text-white pr-1 pl-1" href="{{ route('admin.reports.all') }}">گزارشات</a>
-        <a class="text-white pr-1 pl-1" href="{{ route('admin.pages') }}">صفحات ویژه</a>
     </nav>
     @yield('content-admin')
 @endsection
