@@ -19,6 +19,8 @@ Route::get('/today', 'PostController@today')->name('today');
 
 Route::get('/p/{post:uri}', 'PostController@show')->name('show_post');
 
+Route::get('/s/{site:domain}', 'SiteController@index')->name('show.site.posts');
+
 // User Space
 Route::middleware(['auth'])->group(function () {
     Route::get('/home', 'HomeController@index')->name('home');

@@ -10,6 +10,9 @@
         </div>
     @endif
 
+    <div class="card-header" style="background-color:grey; color:black">
+        <h4 class="text-center">همه‌ی پست‌های سایت «<a href="http://{{ $siteName }}" style="color:darkblue;" target="_blank">{{ $siteName }}</a>»</h4>
+    </div><br />
 
     @foreach($posts as $index=>$post)
         <div class="row post text-right mr-0 ml-0">
@@ -21,35 +24,22 @@
                         </span>
                         . {{ $post->title }}
                     </a>
-                    <span class="text-secondary link">(<a href="{{ route('show.site.posts', $post->site->domain) }}">{{ $post -> site -> domain }}</a>)</span>
+                    <span class="text-secondary link">({{ $post -> site -> domain }})</span>
                 </h2>
                 <h3 class="text-secondary">
                     {{ num_to_fa($post->getPointsAttribute()) }}
                     <a href="{{ route('post.vote', ['post'=>$post, 1]) }}">🔺</a>
                     <a href="{{ route('post.vote', ['post'=>$post, 0]) }}">🔻</a>
-                    | نوشته {{ $post->user->name }}
-                    در {{ num_to_fa(\Morilog\Jalali\Jalalian::forge($post->created_at)->ago()) }} |
-
-                    {{ num_to_fa($post->comments_count) }}
-
+                    | نوشته {{ $post->user->name }} در
+                    {{ num_to_fa(\Morilog\Jalali\Jalalian::forge($post->created_at)->ago()) }}
+                    | {{ num_to_fa($post->comments_count) }}
                     <a class="text-secondary"
                        href="{{route('show_post',['post'=>$post])}}">
                         {{__('general.Comment')}}</a> |
-
-                    @if(Auth::user()!=null && Auth::user()->‌isAdmin())
-                        <a class="text-dark"
-                           href="{{ route('admin.reports.post_id',['post'=>$post])}}">
-                            گزارشات
-                        </a>
-                        |<a class="text-danger" href="{{ route('post.delete',['post'=>$post]) }}">
-                            {{ __('general.Delete') }}
-                        </a>
-                    @else
-                        <a class="text-secondary"
-                           href="{{ route('post_report',['post'=>$post])}}">
-                            گزارش
-                        </a>
-                    @endif
+                    <a class="text-secondary"
+                       href="{{ route('post_report',['post'=>$post])}}">
+                        گزارش
+                    </a>
                 </h3>
             </div>
         </div>
@@ -63,8 +53,8 @@
             <h2 class="text-secondary">شما تمام صفحات را دیدید :) <span>(<a href="?page=1">صغحه اول</a>)</span></h2>
         </div>
     @elseif(sizeof($posts)==0)
-        <div class="row more ml-0 mr-0 justify-content-center">
-            <h2 class="text-secondary ">¯\_( ͡° ͜ʖ ͡°)_/¯</h2>
+        <div class="row more ml-0">
+            <h2 class="text-secondary">¯\_( ͡° ͜ʖ ͡°)_/¯ پستی نبود!</h2>
         </div>
     @endif
 @endsection

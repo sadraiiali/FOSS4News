@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\CreatePostRequest;
 use App\Post;
+use App\Site;
 use Carbon\Carbon;
 use Exception;
 use Illuminate\Contracts\View\Factory;
@@ -145,14 +146,38 @@ class PostController extends Controller
         return redirect()->back()->withErrors(['msg' => __('errors.post.Unauthorized')]);
     }
 
+    /**
+     * find domain name from given url
+     * 
+     * @param String $url
+     * @return String
+     */
+    public function getSiteName(String $url) {
+        $site_name_pattern = '/([a-zA-Z0-9]([a-zA-Z0-9\-]{0,65}[a-zA-Z0-9])?\.)+[a-zA-Z]{2,6}/m';
+        preg_match_all($site_name_pattern, $url, $matches);
+        return $matches[0][0];
+    }
+    
     public function create_post(CreatePostRequest $request)
     {
+        try {
+            // check if site already exists assign $siteId to intended site id
+            $siteName = $this->getSiteName($request->link);
+            $siteId = Site::Where('domain', $siteName) -> first() -> id;
+        } catch (Exception $e) {
+            // if site already not exists, create it and assign $siteId to intended site id
+            $siteId = Site::create(
+                ['domain' => $siteName]
+            ) -> id;
+        }
+
         try {
             Auth::user()->posts()->create([
                 'uri' => Post::findUri($request->title),
                 'title' => $request->title,
                 'body' => $request->body,
                 'link' => $request->link,
+                'site_id' => $siteId,
             ]);
             return redirect('/')->with('success', 'پست شما ساخته شد');
         } catch (Exception $e) {

@@ -4,6 +4,7 @@
 
 use App\Post;
 use App\User;
+use App\Site;
 use Faker\Generator as Faker;
 use Illuminate\Support\Str;
 
@@ -16,5 +17,6 @@ $factory->define(Post::class, function (Faker $faker) {
         'title' => $title,
         'body' => $faker->text(100),
         'link' => $faker->url,
+        'site_id' => Site::all()->random()->id,
     ];
 });
