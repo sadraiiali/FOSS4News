@@ -55,7 +55,10 @@ class PostController extends Controller
         if (isset($request['page'])) {
             $page = $request['page'];
         }
-        $all_post_with_user = Post::whereDate('created_at', Carbon::today())->with('user')->paginate(30);
+        $all_post_with_user = Post::whereDate('created_at', Carbon::today())
+            ->orderBy('created_at', 'DESC')
+            ->with('user')
+            ->paginate(30);
 
         $is_end = false;
         if ($all_post_with_user->lastPage() == $page) {
