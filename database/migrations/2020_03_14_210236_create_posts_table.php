@@ -20,6 +20,7 @@ class CreatePostsTable extends Migration
             $table->string('title', 100);
             $table->mediumText('body')->nullable();
             $table->string('link')->nullable();
+            $table->unsignedBigInteger('site_id');
             $table->integer('comments_count')->default(0);
             $table->bigInteger('likes')->default(0);
             $table->bigInteger('dislikes')->default(0);

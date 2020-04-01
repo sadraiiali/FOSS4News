@@ -146,29 +146,20 @@ class PostController extends Controller
         return redirect()->back()->withErrors(['msg' => __('errors.post.Unauthorized')]);
     }
 
-    /**
-     * find domain name from given url
-     * 
-     * @param String $url
-     * @return String
-     */
-    public function getSiteName(String $url) {
-        $site_name_pattern = '/([a-zA-Z0-9]([a-zA-Z0-9\-]{0,65}[a-zA-Z0-9])?\.)+[a-zA-Z]{2,6}/m';
-        preg_match_all($site_name_pattern, $url, $matches);
-        return $matches[0][0];
-    }
-    
     public function create_post(CreatePostRequest $request)
     {
         try {
             // check if site already exists assign $siteId to intended site id
-            $siteName = $this->getSiteName($request->link);
-            $siteId = Site::Where('domain', $siteName) -> first() -> id;
+            $siteName = Post::findSiteName($request->link);
+            if ($siteName == '') {
+                return view('posts.create', ['error' => true]);
+            }
+            $siteId = Site::Where('domain', $siteName)->first()->id;
         } catch (Exception $e) {
             // if site already not exists, create it and assign $siteId to intended site id
-            $siteId = Site::create(
-                ['domain' => $siteName]
-            ) -> id;
+            $siteId = Site::create([
+                'domain' => $siteName
+            ])->id;
         }
 
         try {

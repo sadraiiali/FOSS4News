@@ -13,7 +13,6 @@ class VoteSeeder extends Seeder
     public function run()
     {
         factory(Vote::class, 10)->states('post')->create();
-        factory(Vote::class, 10)->states('post')->create();
-
+        factory(Vote::class, 10)->states('comment')->create();
     }
 }

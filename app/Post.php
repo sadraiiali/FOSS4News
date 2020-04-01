@@ -33,15 +33,25 @@ class Post extends Model
      */
     public function siteName()
     {
+        return self::findSiteName($this->link);
+    }
+
+    /**
+     * find site name from given url
+     *
+     * @param String $url
+     * @return String
+     */
+    public static function findSiteName(string $url)
+    {
         $site_name_pattern = '/([a-zA-Z0-9]([a-zA-Z0-9\-]{0,65}[a-zA-Z0-9])?\.)+[a-zA-Z]{2,6}/m';
-        preg_match_all($site_name_pattern, $this->link, $matches);
+        preg_match_all($site_name_pattern, $url, $matches);
         try {
             $out = $matches[0][0];
         } catch (Exception $e) {
-            $out = ' ';
+            $out = '';
         }
         return $out;
-
     }
 
     public static function findUri($title)

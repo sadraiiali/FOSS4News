@@ -16,6 +16,8 @@ class CreateSitesTable extends Migration
         Schema::create('sites', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
+            $table->string('domain')->unique();
+            $table->integer('post_count')->default(0);
         });
     }
 

@@ -10,9 +10,13 @@
         </div>
     @endif
 
-    <div class="card-header" style="background-color:grey; color:black">
-        <h4 class="text-center">همه‌ی پست‌های سایت «<a href="http://{{ $siteName }}" style="color:darkblue;" target="_blank">{{ $siteName }}</a>»</h4>
-    </div><br />
+    <div class="row mx-0 mb-4" style="margin-top: -1.5rem">
+        <div class="col-12 py-3 bg-primary text-white mt-0">
+            <h4 class="text-center mb-0">
+                «<a href="http://{{ $siteName }}" class="text-white" target="_blank">{{ $siteName }}</a>»
+            </h4>
+        </div>
+    </div>
 
     @foreach($posts as $index=>$post)
         <div class="row post text-right mr-0 ml-0">

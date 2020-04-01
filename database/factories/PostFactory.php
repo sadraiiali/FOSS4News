@@ -11,12 +11,22 @@ use Illuminate\Support\Str;
 $factory->define(Post::class, function (Faker $faker) {
     $title = $faker->realText(50);
     $uri = Post::findUri($title);
+    $url = $faker->url;
+    $site_name = Post::findSiteName($url);
+    try {
+        $site = Site::where(['domain' => $site_name])->firstOrFail();
+    } catch (Exception $e) {
+        $site = Site::create([
+            'domain' => $site_name,
+        ]);
+    }
+    $site->increment('post_count');
     return [
-        'user_id' => User::find(2)->id,
+        'user_id' => User::all()->random()->id,
         'uri' => $uri,
         'title' => $title,
         'body' => $faker->text(100),
         'link' => $faker->url,
-        'site_id' => Site::all()->random()->id,
+        'site_id' => $site->id,
     ];
 });
