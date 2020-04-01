@@ -2,7 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Comment;
 use App\Post;
+use App\Report;
+use App\Site;
 use App\User;
 use Exception;
 
@@ -19,18 +22,29 @@ class AdminController extends Controller
             ->orderBy('created_at', 'DESC')
             ->paginate(30);
 
-        $users_count = $users->toArray()['total'];
-        $last_page = $users->toArray()['last_page'];
-        $current_page = $users->toArray()['current_page'];
         $admins_count = User::where(['role' => 'ADMIN'])->count();
 
         return view('admin.users', [
             'users' => $users,
             'admins_count' => $admins_count,
-            'users_count' => $users_count,
-            'last_page' => $last_page,
-            'current_page' => $current_page,
+            'users_count' => $users->toArray()['total'],
+            'last_page' => $users->toArray()['last_page'],
+            'current_page' => $users->toArray()['current_page'],
         ]);
+    }
+
+    public function deleteUser(User $user)
+    {
+        try {
+            $user->posts()->delete();
+            $user->votes()->delete();
+            $user->reports()->delete();
+            $user->reported()->delete();
+            $user->delete();
+            return redirect()->back();
+        } catch (Exception $e) {
+            return redirect()->back()->withErrors(['msg' => __('errors.admin.Delete User')]);
+        }
     }
 
     public function showPosts()
@@ -66,17 +80,44 @@ class AdminController extends Controller
         }
     }
 
-    public function deleteUser(User $user)
+    public function showAllReports()
+    {
+        $post_reports_count = Report::where(['reportable_type' => Post::class])->count();
+        $user_reports_count = Report::where(['reportable_type' => User::class])->count();
+        $comment_reports_count = Report::where(['reportable_type' => Comment::class])->count();
+        $site_reports_count = Report::where(['reportable_type' => Site::class])->count();
+        $trashed_reports_count = Report::onlyTrashed()->count();
+
+        $all_reports_count = $post_reports_count + $user_reports_count + $comment_reports_count + $site_reports_count;
+
+        return view('admin.report.all', [
+            'post_reports_count' => $post_reports_count,
+            'user_reports_count' => $user_reports_count,
+            'comment_reports_count' => $comment_reports_count,
+            'site_reports_count' => $site_reports_count,
+            'all_reports_count' => $all_reports_count,
+            'trashed_reports_count' => $trashed_reports_count,
+        ]);
+    }
+
+    public function showPostReports()
+    {
+        $reports = Report::where(['reportable_type' => Post::class])->paginate(30);
+        return view('admin.report.post', [
+            'reports' => $reports,
+            'reports_count' => $reports->toArray()['total'],
+            'last_page' => $reports->toArray()['last_page'],
+            'current_page' => $reports->toArray()['current_page'],
+        ]);
+    }
+
+    public function deleteReport(Report $report)
     {
         try {
-            $user->posts()->delete();
-            $user->votes()->delete();
-            $user->reports()->delete();
-            $user->reported()->delete();
-            $user->delete();
+            $report->delete();
             return redirect()->back();
         } catch (Exception $e) {
-            return redirect()->back()->withErrors(['msg' => __('errors.admin.Delete User')]);
+            return redirect()->back()->withErrors(['msg' => __('errors.admin.Delete Report')]);
         }
     }
 

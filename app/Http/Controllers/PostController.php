@@ -136,6 +136,7 @@ class PostController extends Controller
         if ($user->role == 'ADMIN' || $user->id == $post->user_id) {
             try {
                 $post->delete();
+                $post->reports()->delete();
             } catch (Exception $e) {
                 return redirect()->back()->withErrors(['msg' => __('errors.post.Unauthorized')]);
             }

@@ -40,18 +40,28 @@ Route::middleware(['auth'])->group(function () {
 
 
 // Admin Space
-Route::middleware(['auth', 'admin'])->prefix('admin')->group(function () {
-    Route::get('/', 'AdminController@index')->name('admin.home');
-    Route::get('/users', 'AdminController@showUsers')->name('admin.users');
-    Route::get('/users/{user:id}/d', 'AdminController@deleteUser')->name('admin.users.delete');
-    Route::get('/users/{user:id}/a', 'AdminController@makeAdmin')->name('admin.users.make_admin');
+Route::middleware(['auth', 'admin'])->name('admin.')->prefix('admin')->group(function () {
+    Route::get('/', 'AdminController@index')->name('home');
+    Route::get('/users', 'AdminController@showUsers')->name('users');
+    Route::get('/users/{user:id}/d', 'AdminController@deleteUser')->name('users.delete');
+    Route::get('/users/{user:id}/a', 'AdminController@makeAdmin')->name('users.make_admin');
 
-    Route::get('/posts', 'AdminController@showPosts')->name('admin.posts');
-    Route::get('/posts/{post:id}/d', 'AdminController@deletePost')->name('admin.posts.delete');
+    Route::get('/posts', 'AdminController@showPosts')->name('posts');
+    Route::get('/posts/{post:id}/d', 'AdminController@deletePost')->name('posts.delete');
 
-    Route::get('/reports', 'AdminController@index')->name('admin.reports');
+    Route::name('reports.')->prefix('reports')->group(function () {
+        Route::get('/all', 'AdminController@showAllReports')->name('all');
 
-    Route::get('/pages', 'AdminController@index')->name('admin.pages');
+        Route::get('/{report}/d', 'AdminController@deleteReport')->name('delete');
+
+        Route::get('/post', 'AdminController@showPostReports')->name('post');
+        Route::get('/comment', 'AdminController@showReports')->name('comment');
+
+        Route::get('/site', 'AdminController@showReports')->name('site');
+    });
+
+
+    Route::get('/pages', 'AdminController@index')->name('pages');
 });
 
 Auth::routes();
