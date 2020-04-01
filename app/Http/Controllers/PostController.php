@@ -100,8 +100,14 @@ class PostController extends Controller
      */
     public function show(Post $post)
     {
-        $comments = $post->comments()->paginate(5);
-        return view('posts.show', ['post' => $post, 'comments' => $comments]);
+        $comments = $post->comments()
+            ->orderBy('created_at', 'DESC')
+            ->get();
+//            ->paginate(5);
+        return view('posts.show', [
+            'post' => $post,
+            'comments' => $comments
+        ]);
     }
 
     /**
@@ -139,8 +145,10 @@ class PostController extends Controller
         $user = Auth::user();
         if ($user->role == 'ADMIN' || $user->id == $post->user_id) {
             try {
-                $post->delete();
+                $post->comments()->delete();
                 $post->reports()->delete();
+                $post->votes()->delete();
+                $post->delete();
             } catch (Exception $e) {
                 return redirect()->back()->withErrors(['msg' => __('errors.post.Unauthorized')]);
             }

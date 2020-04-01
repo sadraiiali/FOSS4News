@@ -66,16 +66,6 @@ class AdminController extends Controller
         ]);
     }
 
-    public function deletePost(Post $post)
-    {
-        try {
-            $post->delete();
-            return redirect()->back();
-        } catch (Exception $e) {
-            return redirect()->back()->withErrors(['msg' => __('errors.admin.Delete Post')]);
-        }
-    }
-
     public function showAllReports()
     {
         $post_reports_count = Report::where(['reportable_type' => Post::class])->count();

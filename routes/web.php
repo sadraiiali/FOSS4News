@@ -49,7 +49,7 @@ Route::middleware(['auth', 'admin'])->name('admin.')->prefix('admin')->group(fun
     Route::get('/users/{user:id}/a', 'AdminController@makeAdmin')->name('users.make_admin');
 
     Route::get('/posts', 'AdminController@showPosts')->name('posts');
-    Route::get('/posts/{post:id}/d', 'AdminController@deletePost')->name('posts.delete');
+    Route::get('/posts/{post:id}/d', 'PostController@destroy')->name('posts.delete');
 
     Route::name('reports.')->prefix('reports')->group(function () {
         Route::get('/all', 'AdminController@showAllReports')->name('all');
