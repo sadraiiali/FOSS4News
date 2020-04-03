@@ -9,25 +9,38 @@ else
     exit
 fi
 
-echo "=> docker-compose up -d --build"
+echo "=> npm install"
+docker run -it \
+	--mount type=bind,source=/home/ubuntu/FOSS4News/src,target=/src \
+	-w /src \
+	node \
+	npm install
+
+echo "=> npm run dev"
+docker run -it \
+        --mount type=bind,source=/home/ubuntu/FOSS4News/src,target=/src \
+        -w /src \
+        node \
+        npm run dev
+
+echo "=> composer install"
+docker run -it \
+        --mount type=bind,source=/home/ubuntu/FOSS4News/src,target=/src \
+        -w /src \
+        composer \
+        composer install
+
+echo "=> docker-compose up"
 docker-compose up -d --build
 
-echo "=> docker-compose run --rm composer install"
-docker-compose run --rm composer install
+echo "=> generate app key"
+docker-compose exec app php artisan key:generate
 
-echo "docker-compose run --rm artisan key:generate"
-docker-compose run --rm artisan key:generate
+echo "WAIT until mysql is up ..."
+#TODO change to mysql checker
+sleep 20
 
-echo "docker-compose run --rm npm install"
-docker-compose run --rm npm install
-
-echo "=> docker-compose run --rm npm run dev"
-docker-compose run --rm npm run dev
-
-echo "=> docker-compose run --rm artisan migrate"
-docker-compose run --rm artisan migrate:fresh --seed
-
-echo "=> docker-compose run --rm artisan storage:link"
-docker-compose run --rm artisan storage:link
+echo "=> seed DB"
+docker-compose exec app php artisan migrate --seed
 
 echo "\n\n\n\n\n\n======> done :) enjoy!"

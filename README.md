@@ -23,7 +23,7 @@ before run this project you need to install docker & docker-compose.
 
 4. Run `./RunFirstTime.sh`.
 
-    `./RunFirstTime.sh`
+    `bash ./RunFirstTime.sh`
 
 5. Create your account then login with default Admin then make your account admin! (you can remove default users)
    
