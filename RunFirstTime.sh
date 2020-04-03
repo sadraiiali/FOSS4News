@@ -9,6 +9,10 @@ else
     exit
 fi
 
+echo "=> Generating MySQL Passwords"
+sed -i "s/\(MYSQL_PASSWORD: \).*/\1$(openssl rand -base64 12)/g" ./docker-compose.yml
+sed -i "s/\(MYSQL_ROOT_PASSWORD: \).*/\1$(openssl rand -base64 12)/g" ./docker-compose.yml
+
 echo "=> npm install"
 docker run -it \
 	--mount type=bind,source=/home/ubuntu/FOSS4News/src,target=/src \
