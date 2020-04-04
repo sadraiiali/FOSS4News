@@ -15,21 +15,21 @@ sed -i "s/\(MYSQL_ROOT_PASSWORD: \).*/\1$(openssl rand -base64 12)/g" ./docker-c
 
 echo "=> npm install"
 docker run -it \
-	--mount type=bind,source=/home/ubuntu/FOSS4News/src,target=/src \
+	--mount type=bind,source=`pwd`/src,target=/src \
 	-w /src \
 	node \
 	npm install
 
 echo "=> npm run dev"
 docker run -it \
-        --mount type=bind,source=/home/ubuntu/FOSS4News/src,target=/src \
+        --mount type=bind,source=`pwd`/src,target=/src \
         -w /src \
         node \
         npm run dev
 
 echo "=> composer install"
 docker run -it \
-        --mount type=bind,source=/home/ubuntu/FOSS4News/src,target=/src \
+        --mount type=bind,source=`pwd`/src,target=/src \
         -w /src \
         composer \
         composer install
