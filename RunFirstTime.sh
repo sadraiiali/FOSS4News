@@ -10,8 +10,11 @@ else
 fi
 
 echo "=> Generating MySQL Passwords"
-sed -i "s/\(MYSQL_PASSWORD: \).*/\1$(openssl rand -base64 12)/g" ./docker-compose.yml
-sed -i "s/\(MYSQL_ROOT_PASSWORD: \).*/\1$(openssl rand -base64 12)/g" ./docker-compose.yml
+dbUserPassword=`openssl rand -base64 12 | tr -d "=+/" | cut -c1-25`
+dbRootPass=`openssl rand -base64 12 | tr -d "=+/" | cut -c1-25`
+sed -i "s/\(MYSQL_PASSWORD: \).*/\1$dbPass/g" ./docker-compose.yml
+sed -i "s/\(MYSQL_ROOT_PASSWORD: \).*/\1$rootPass/g" ./docker-compose.yml
+sed -i "s/\(DB_PASSWORD: \).*/\1$dbPass/g" ./docker-compose.yml
 
 echo "=> npm install"
 docker run -it \
