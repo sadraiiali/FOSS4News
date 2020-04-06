@@ -5,7 +5,7 @@ if test -f "$CONF"; then
 else
     echo "=> $CONF Does not exist."
     cp src/.env.example src/.env
-    echo "==> I copied .env file for you just edit it :) bye"
+    echo "==> I copied .env file for you just edit it then run this code again :) bye"
     exit
 fi
 
