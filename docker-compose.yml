@@ -1,0 +1,43 @@
+version: '3'
+
+networks:
+  laravel:
+
+services:
+  mysql:
+    image: mysql:5.7.29
+    container_name: mysql
+    restart: unless-stopped
+    tty: true
+    environment:
+      MYSQL_DATABASE: laravel
+      MYSQL_USER: foss
+      MYSQL_PASSWORD: secret
+      MYSQL_ROOT_PASSWORD: secret
+      SERVICE_TAGS: dev
+      SERVICE_NAME: mysql
+    networks:
+      - laravel
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: app
+    environment:
+      APP_NAME: لینکدونی
+      APP_DEBUG: false
+      APP_URL: http://FOLAN.com #APP URL HERE
+      DB_HOST: mysql
+      DB_PORT: 3306
+      DB_DATABASE: laravel
+      DB_USERNAME: foss
+      DB_PASSWORD: secret
+    volumes:
+      - ./apache/:/etc/apache2/sites-enabled/
+    ports:
+      - "8080:80"
+      - "443:443"
+    depends_on:
+      - mysql 
+    networks:
+      - laravel

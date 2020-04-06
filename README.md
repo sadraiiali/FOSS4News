@@ -9,39 +9,31 @@ Just a simple clone of The Hacker News based on [Laravel Framework](https://lara
 
 ## Run
 
-before run this project you need to install [php](https://www.php.net/manual/en/install.php), [composer](https://getcomposer.org/), a dbms (like [mysql](https://dev.mysql.com/doc/mysql-installation-excerpt/5.7/en/)) and [npm](https://www.npmjs.com/get-npm).
+before run this project you need to install docker & docker-compose.
 
-1. First copy example environment and change it with your parameters.
+1. Clone project.
 
-   `cp .env.example .env`
+   `git clone https://github.com/sadraiiali/FOSS4News.git && cd FOSS4News`
 
-2. Install PHP dependencies.
+2. Make `.env` file from `.env.example` with your configs.
 
-    `composer install`
+    `cp src/.env.example src/.env`
 
-3. Create App Key.
+3. Modify Mysql variables form `docker-compose.yml` and match with `.env` file.
 
-    `php artisan key:generate`
+4. Run `./RunFirstTime.sh`.
 
-4. Create database tables.
+    `bash ./RunFirstTime.sh`
 
-    `php artisan migrate`
-
-5. Link storage files to public.
-
-    `php artisan storage:link`
-
-6. Install JS dependencies.
-
-    `npm install`
-
-7. Run npm.
-
-    `npm run dev` 
-
-8. Run Project using php artisan.
-
-    `php artisan serv`
+5. Create your account then login with default Admin then make your account admin! (you can remove default users)
+   
+    `Default Admin : admin@admin.com:adminadmin`
+    
+    `Default User : test@test.com:testtest`
+    
+    Done :)
+    
+    
 
 ## License
 
