@@ -24,6 +24,9 @@ services:
       dockerfile: Dockerfile
     container_name: app
     environment:
+      APP_NAME: لینکدونی
+      APP_DEBUG: false
+      APP_URL: http://FOLAN.com #APP URL HERE
       DB_HOST: mysql
       DB_PORT: 3306
       DB_DATABASE: laravel
