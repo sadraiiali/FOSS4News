@@ -19,7 +19,7 @@
 1. پروژه را با دستور زیر در سیستم ذخیره کنید.
 
    ```
-   git clone git@github.com:sadraiiali/FOSS4News.git && cd FOSS4News
+   git clone https://github.com/sadraiiali/FOSS4News.git && cd FOSS4News
    ```
 
 2. با اجرای دستور زیر فایل `src/.env` ساخته می‌شود. در این فایل و یا فایل `docker-compose.yml` شما میتوانید تنظیمات خود را انجام دهید. به صورت پیشفرض تنها نیاز است در فایل `docker-compose.yml` دو متغییر `APP_URL` (برای آدرس سایت خود) و متغیر `APP_NAME` (برای نام سایت خود) تعویض کنید.
