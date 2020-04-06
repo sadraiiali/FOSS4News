@@ -18,9 +18,9 @@
 - :heavy_check_mark: امکان رای مثبت یا منفی دادن به پست
 - :heavy_check_mark: امکان حذف پست خود​
 - :heavy_check_mark: امکان کامنت‌گذاری زیر پست‌ها (بدون نیاز به تایید شدن)
-- :black_square_button: ایمیل ثبت‌نام
+- :heavy_check_mark: ایمیل ثبت‌نام
 - :black_square_button: ایمیل تایید پست الکترونیکی
-- :black_square_button: ایمیل فراموشی رمزعبور 	 	 	
+- :heavy_check_mark: ایمیل فراموشی رمزعبور 	 	 	
 
 #### بخش مدیر
 
@@ -35,6 +35,7 @@
 - :heavy_check_mark: مشاهده‌ی کامنت‌های زیر یک پست
 - :heavy_check_mark: مشاهده‌ی رای‌ها
 - :heavy_check_mark: مشاهده‌ی صفحه‌ی مربوط به هر سایت
+- :heavy_check_mark: اجرا با استفاده از یک دستور
 
 #### نیازمندی‌های فرعی
 
