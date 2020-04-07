@@ -190,4 +190,22 @@ class PostController extends Controller
         return redirect('today');
     }
 
+
+    /**
+     * function to send all posts in a json response for API
+     * 
+     * @return Response
+     */
+    public function getAllPosts() {
+        $allPosts = Post::orderBy('created_at', 'DESC')->with('user')->get();
+
+        return Response()->json(
+            [
+                'status' => 200,
+                'data' => ['posts' => $allPosts]
+            ],
+            200
+        );
+    }
+
 }
