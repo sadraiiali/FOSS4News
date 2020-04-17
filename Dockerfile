@@ -4,13 +4,12 @@ COPY src /var/www/html
 WORKDIR /var/www/html
 
 RUN apt update && \
-    apt install -y oniguruma-dev && \
-    docker-php-ext-install pdo_mysql mbstring exif pcntl bcmath gd&& \
+    docker-php-ext-install pdo_mysql mbstring && \
     a2enmod rewrite && \
     cp apache/* /etc/apache2/sites-available && \
     a2ensite foss4news.conf && \
     a2dissite 000-default.conf && \
-    chmod -R 775 public && \
+    chmod -R 775 public storage && \
     service apache2 restart
 
 EXPOSE 80/tcp

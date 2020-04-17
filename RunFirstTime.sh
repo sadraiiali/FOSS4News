@@ -40,17 +40,17 @@ docker run -it \
 echo "=> docker-compose up"
 docker-compose up -d --build
 
-echo "=> generate app key"
-docker-compose exec app php artisan key:generate
+echo "=> generate foss4_app key"
+docker-compose exec foss4_app php artisan key:generate
 
 echo "=> php artisan storage:link"
-docker-compose exec app php artisan storage:link
+docker-compose exec foss4_app php artisan storage:link
 
 echo "WAIT until mysql is up ..."
 #TODO change to mysql checker
 sleep 100
 
 echo "=> seed DB"
-docker-compose exec app php artisan migrate --seed
+docker-compose exec foss4_app php artisan migrate --seed
 
 echo "\n\n\n\n\n\n======> done :) enjoy!"
