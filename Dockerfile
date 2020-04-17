@@ -8,7 +8,7 @@ RUN docker-php-ext-install pdo_mysql && \
     cp apache/* /etc/apache2/sites-available && \
     a2ensite foss4news.conf && \
     a2dissite 000-default.conf && \
-    chmod -R 775 public storage && \
+    chmod -R 777 public storage && \
     service apache2 restart
 
 EXPOSE 80/tcp
