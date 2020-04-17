@@ -2,7 +2,8 @@ version: '3'
 
 networks:
   appnet:
-
+volumes:
+  foss4_data:
 services:
   foss4_db:
     image: mysql:5.7.29
@@ -16,6 +17,8 @@ services:
       MYSQL_ROOT_PASSWORD: ZGFVA9K5wsx67OTp
       SERVICE_TAGS: dev
       SERVICE_NAME: mysql
+    volumes:
+      - foss4_data:/var/lib/mysql
     networks:
       - appnet
   foss4_app:
