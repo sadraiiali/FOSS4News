@@ -66,11 +66,11 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        try {
-            Mail::to($data['email'])->send(new WelcomeMail());
-        } catch (Exception $e) {
-            
-        }
+//        try {
+//            Mail::to($data['email'])->send(new WelcomeMail());
+//        } catch (Exception $e) {
+//
+//        }
         return User::create([
             'name' => $data['name'],
             'email' => $data['email'],

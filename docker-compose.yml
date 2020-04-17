@@ -1,7 +1,7 @@
 version: '3'
 
 networks:
-  laravel:
+  appnet:
 
 services:
   mysql:
@@ -10,14 +10,14 @@ services:
     restart: unless-stopped
     tty: true
     environment:
-      MYSQL_DATABASE: laravel
       MYSQL_USER: foss
+      MYSQL_DATABASE: laravel
       MYSQL_PASSWORD: secret
       MYSQL_ROOT_PASSWORD: secret
       SERVICE_TAGS: dev
       SERVICE_NAME: mysql
     networks:
-      - laravel
+      - appnet
   app:
     build:
       context: .
@@ -31,12 +31,10 @@ services:
       DB_DATABASE: laravel
       DB_USERNAME: foss
       DB_PASSWORD: secret
-    volumes:
-      - ./apache/:/etc/apache2/sites-enabled/
     ports:
       - "80:80"
       - "443:443"
     depends_on:
       - mysql 
     networks:
-      - laravel
+      - appnet

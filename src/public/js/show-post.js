@@ -81,15 +81,15 @@
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 0);
+/******/ 	return __webpack_require__(__webpack_require__.s = 1);
 /******/ })
 /************************************************************************/
 /******/ ({
 
-/***/ "./resources/js/app.js":
-/*!*****************************!*\
-  !*** ./resources/js/app.js ***!
-  \*****************************/
+/***/ "./resources/js/show-post.js":
+/*!***********************************!*\
+  !*** ./resources/js/show-post.js ***!
+  \***********************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
@@ -97,26 +97,14 @@ throw new Error("Module build failed (from ./node_modules/babel-loader/lib/index
 
 /***/ }),
 
-/***/ "./resources/sass/app.scss":
-/*!*********************************!*\
-  !*** ./resources/sass/app.scss ***!
-  \*********************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-// removed by extract-text-webpack-plugin
-
-/***/ }),
-
-/***/ 0:
-/*!*************************************************************!*\
-  !*** multi ./resources/js/app.js ./resources/sass/app.scss ***!
-  \*************************************************************/
+/***/ 1:
+/*!*****************************************!*\
+  !*** multi ./resources/js/show-post.js ***!
+  \*****************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! /src/resources/js/app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! /src/resources/sass/app.scss */"./resources/sass/app.scss");
+module.exports = __webpack_require__(/*! /src/resources/js/show-post.js */"./resources/js/show-post.js");
 
 
 /***/ })

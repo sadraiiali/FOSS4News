@@ -43,9 +43,12 @@ docker-compose up -d --build
 echo "=> generate app key"
 docker-compose exec app php artisan key:generate
 
+echo "=> php artisan storage:link"
+docker-compose exec app php artisan storage:link
+
 echo "WAIT until mysql is up ..."
 #TODO change to mysql checker
-sleep 20
+sleep 100
 
 echo "=> seed DB"
 docker-compose exec app php artisan migrate --seed

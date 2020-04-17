@@ -1,16 +1,15 @@
 FROM php:7.4-apache
-
-RUN docker-php-ext-install pdo pdo_mysql
-
+ 
 COPY src /var/www/html
-COPY apache /etc/apache2/sites-enabled
-RUN a2enmod rewrite
-
 WORKDIR /var/www/html
 
-RUN chown www-data:www-data -R *
-
-
+RUN docker-php-ext-install pdo_mysql mbstring exif pcntl bcmath gd&& \
+    a2enmod rewrite && \
+    cp apache/* /etc/apache2/sites-available && \
+    a2ensite foss4news.conf && \
+    a2dissite 000-default.conf && \
+    chmod -R 775 public && \
+    service apache2 restart
 
 EXPOSE 80/tcp
 EXPOSE 443/tcp
