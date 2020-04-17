@@ -4,37 +4,38 @@ networks:
   appnet:
 
 services:
-  mysql:
+  foss4_db:
     image: mysql:5.7.29
-    container_name: mysql
+    container_name: foss4_db
     restart: unless-stopped
     tty: true
     environment:
       MYSQL_USER: foss
       MYSQL_DATABASE: laravel
-      MYSQL_PASSWORD: secret
-      MYSQL_ROOT_PASSWORD: secret
+      MYSQL_PASSWORD: g7UbLVp2JSgqjlQa
+      MYSQL_ROOT_PASSWORD: ZGFVA9K5wsx67OTp
       SERVICE_TAGS: dev
       SERVICE_NAME: mysql
     networks:
       - appnet
-  app:
+  foss4_app:
     build:
       context: .
       dockerfile: Dockerfile
-    container_name: app
+    container_name: foss4_app
+    image: foss4news
     environment:
       APP_NAME: Linkdoni
       APP_URL: http://FOLAN.com #APP URL HERE
-      DB_HOST: mysql
+      DB_HOST: foss4_db
       DB_PORT: 3306
       DB_DATABASE: laravel
       DB_USERNAME: foss
-      DB_PASSWORD: secret
+      DB_PASSWORD: g7UbLVp2JSgqjlQa
     ports:
       - "80:80"
       - "443:443"
     depends_on:
-      - mysql 
+      - foss4_db
     networks:
       - appnet

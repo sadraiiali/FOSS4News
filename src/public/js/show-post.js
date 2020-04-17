@@ -93,7 +93,16 @@
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-throw new Error("Module build failed (from ./node_modules/babel-loader/lib/index.js):\nError: Cannot find module '@babel/compat-data/corejs3-shipped-proposals'\nRequire stack:\n- /src/node_modules/@babel/preset-env/lib/polyfills/corejs3/usage-plugin.js\n- /src/node_modules/@babel/preset-env/lib/index.js\n- /src/node_modules/@babel/core/lib/config/files/plugins.js\n- /src/node_modules/@babel/core/lib/config/files/index.js\n- /src/node_modules/@babel/core/lib/index.js\n- /src/node_modules/laravel-mix/src/FileCollection.js\n- /src/node_modules/laravel-mix/src/tasks/ConcatenateFilesTask.js\n- /src/node_modules/laravel-mix/src/components/Combine.js\n- /src/node_modules/laravel-mix/src/components/ComponentFactory.js\n- /src/node_modules/laravel-mix/setup/webpack.config.js\n- /src/node_modules/webpack-cli/bin/utils/convert-argv.js\n- /src/node_modules/webpack-cli/bin/cli.js\n- /src/node_modules/webpack/bin/webpack.js\n    at Function.Module._resolveFilename (internal/modules/cjs/loader.js:952:15)\n    at Function.Module._load (internal/modules/cjs/loader.js:835:27)\n    at Module.require (internal/modules/cjs/loader.js:1012:19)\n    at require (/src/node_modules/v8-compile-cache/v8-compile-cache.js:161:20)\n    at Object.<anonymous> (/src/node_modules/@babel/preset-env/lib/polyfills/corejs3/usage-plugin.js:10:55)\n    at Module._compile (/src/node_modules/v8-compile-cache/v8-compile-cache.js:192:30)\n    at Object.Module._extensions..js (internal/modules/cjs/loader.js:1143:10)\n    at Module.load (internal/modules/cjs/loader.js:972:32)\n    at Function.Module._load (internal/modules/cjs/loader.js:872:14)\n    at Module.require (internal/modules/cjs/loader.js:1012:19)\n    at require (/src/node_modules/v8-compile-cache/v8-compile-cache.js:161:20)\n    at Object.<anonymous> (/src/node_modules/@babel/preset-env/lib/index.js:29:44)\n    at Module._compile (/src/node_modules/v8-compile-cache/v8-compile-cache.js:192:30)\n    at Object.Module._extensions..js (internal/modules/cjs/loader.js:1143:10)\n    at Module.load (internal/modules/cjs/loader.js:972:32)\n    at Function.Module._load (internal/modules/cjs/loader.js:872:14)\n    at Module.require (internal/modules/cjs/loader.js:1012:19)\n    at require (/src/node_modules/v8-compile-cache/v8-compile-cache.js:161:20)\n    at requireModule (/src/node_modules/@babel/core/lib/config/files/plugins.js:165:12)\n    at loadPreset (/src/node_modules/@babel/core/lib/config/files/plugins.js:83:17)\n    at createDescriptor (/src/node_modules/@babel/core/lib/config/config-descriptors.js:154:9)\n    at /src/node_modules/@babel/core/lib/config/config-descriptors.js:109:50\n    at Array.map (<anonymous>)\n    at createDescriptors (/src/node_modules/@babel/core/lib/config/config-descriptors.js:109:29)\n    at createPresetDescriptors (/src/node_modules/@babel/core/lib/config/config-descriptors.js:101:10)\n    at /src/node_modules/@babel/core/lib/config/config-descriptors.js:58:104\n    at cachedFunction (/src/node_modules/@babel/core/lib/config/caching.js:62:27)\n    at cachedFunction.next (<anonymous>)\n    at evaluateSync (/src/node_modules/gensync/index.js:244:28)\n    at sync (/src/node_modules/gensync/index.js:84:14)\n    at presets (/src/node_modules/@babel/core/lib/config/config-descriptors.js:29:84)\n    at mergeChainOpts (/src/node_modules/@babel/core/lib/config/config-chain.js:320:26)\n    at /src/node_modules/@babel/core/lib/config/config-chain.js:283:7\n    at Generator.next (<anonymous>)\n    at buildRootChain (/src/node_modules/@babel/core/lib/config/config-chain.js:68:36)\n    at buildRootChain.next (<anonymous>)");
+var comment_section = document.getElementById('comment_section');
+document.getElementById('comment-btn').addEventListener('click', function (e) {
+  if (e.target.innerText === '+') {
+    e.target.innerText = ' - ';
+    comment_section.classList.remove('d-none');
+  } else {
+    e.target.innerText = '+';
+    comment_section.classList.add('d-none');
+  }
+});
 
 /***/ }),
 
@@ -104,7 +113,7 @@ throw new Error("Module build failed (from ./node_modules/babel-loader/lib/index
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! /src/resources/js/show-post.js */"./resources/js/show-post.js");
+module.exports = __webpack_require__(/*! /home/piker/Projects/FOSS4/FOSS4News/src/resources/js/show-post.js */"./resources/js/show-post.js");
 
 
 /***/ })
