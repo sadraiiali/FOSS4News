@@ -3,8 +3,7 @@ FROM php:7.4-apache
 COPY src /var/www/html
 WORKDIR /var/www/html
 
-RUN apt update && \
-    docker-php-ext-install pdo_mysql && \
+RUN docker-php-ext-install pdo_mysql && \
     a2enmod rewrite && \
     cp apache/* /etc/apache2/sites-available && \
     a2ensite foss4news.conf && \
