@@ -4,7 +4,7 @@ COPY src /var/www/html
 WORKDIR /var/www/html
 
 RUN apt update && \
-    apt install oniguruma-dev && \
+    apt install -y oniguruma-dev && \
     docker-php-ext-install pdo_mysql mbstring exif pcntl bcmath gd&& \
     a2enmod rewrite && \
     cp apache/* /etc/apache2/sites-available && \
