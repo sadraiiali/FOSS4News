@@ -106,4 +106,15 @@ class AuthController extends Controller
             ['message' => 'Successfully logged out.'], 205
         );
     }
+
+    /**
+     * Show User's information with Authorization Header
+     * 
+     * @param Illuminate\Http\Request $request
+     * @return Response
+     */
+    public function user(Request $request)
+    {
+        return response()->json($request->user());
+    }
 }
