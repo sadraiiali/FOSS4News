@@ -47,4 +47,48 @@ class AuthController extends Controller
             ['message' => 'Successfully created user.'], 201
         );
     }
+
+    /**
+     * Login Users and Return Access Token
+     * 
+     * @param Illuminate\Http\Request $request
+     * @return Response
+     */
+    public function login(Request $request)
+    {
+        $request->validate(
+            [
+                'email' => 'required | email',
+                'password' => 'required | string',
+                'remember_me' => 'boolean',
+            ]
+        );
+
+        $credentials = $request->only(['email', 'password']);
+
+        if (!Auth::attempt($credentials)) {
+            return response()->json(
+                ['message' => 'Unauthorized'], 401
+            );
+        }
+
+        $user = $request->user();
+
+        $tokenCreate = $user->createToken('Personal Access Token');
+        $token = $tokenCreate->token;
+
+        if ($request->remember_me) {
+            $token->‌expires_at = Carbon::now()->addWeeks(2);
+        }
+
+        $token->save();
+
+        return response()->json(
+            [
+                'access_token' => $tokenCreate->accessToken,
+                'token_type' => 'Bearer',
+                'expires_at' => Carbon::parse($token->expires_at)->toDateTimeString(),
+            ]
+        );
+    }
 }
