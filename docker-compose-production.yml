@@ -1,0 +1,41 @@
+version: '3'
+
+networks:
+  appnet:
+volumes:
+  foss4_data:
+services:
+  foss4_db:
+    image: mysql:5.7.29
+    container_name: foss4_db
+    restart: unless-stopped
+    tty: true
+    environment:
+      MYSQL_USER: foss
+      MYSQL_DATABASE: laravel
+      MYSQL_PASSWORD: g7UbLVp2JSgqjlQa
+      MYSQL_ROOT_PASSWORD: ZGFVA9K5wsx67OTp
+      SERVICE_TAGS: dev
+      SERVICE_NAME: mysql
+    volumes:
+      - foss4_data:/var/lib/mysql
+    networks:
+      - appnet
+  foss4_app:
+    container_name: foss4_app
+    image: foss4/foss4news:latest
+    environment:
+      APP_NAME: Linkdoni
+      APP_URL: http://FOLAN.com #APP URL HERE
+      DB_HOST: foss4_db
+      DB_PORT: 3306
+      DB_DATABASE: laravel
+      DB_USERNAME: foss
+      DB_PASSWORD: g7UbLVp2JSgqjlQa
+    ports:
+      - "80:80"
+      - "443:443"
+    depends_on:
+      - foss4_db
+    networks:
+      - appnet
