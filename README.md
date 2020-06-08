@@ -1,6 +1,8 @@
 ![FOSS4News_screenshot](doc/img/screenshot.png)
 [![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2Fsadraiiali%2FFOSS4News.svg?type=shield)](https://app.fossa.io/projects/git%2Bgithub.com%2Fsadraiiali%2FFOSS4News?ref=badge_shield)
 
+> # :warning: This project moved to [foss4/FOSS4News](https://github.com/foss4/FOSS4News) repository :warning:
+
 # FOSS4News
 
 Just a simple clone of The Hacker News based on [Laravel Framework](https://laravel.com/docs/7.x/) and [Bootstrap4](https://getbootstrap.com/docs/4.4/getting-started/introduction/),which is in alpha stage. The project has been released in Persian/Farsi language. We are planning additional languages in the future.
