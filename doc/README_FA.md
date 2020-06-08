@@ -1,6 +1,7 @@
 <div dir="rtl">
 
 ![تصویر برنامه](img/screenshot.png)
+> # :warning: این پروژه به [این صفحه](https://github.com/foss4/FOSS4News) منتقل شده است
 
 # لینکدونی‌فسفر
 
