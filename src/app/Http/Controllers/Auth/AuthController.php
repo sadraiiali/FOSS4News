@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\User;
 use Carbon\Carbon;
 use Hash;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -14,10 +15,10 @@ class AuthController extends Controller
     /**
      * Create New User
      *
-     * @param Illuminate\Http\Request $request
-     * @return Response
+     * @param Request $request
+     * @return JsonResponse
      */
-    public function signup(Request $request)
+    public function register(Request $request)
     {
         $request->validate(
             [
@@ -50,9 +51,9 @@ class AuthController extends Controller
 
     /**
      * Login Users and Return Access Token
-     * 
-     * @param Illuminate\Http\Request $request
-     * @return Response
+     *
+     * @param Request $request
+     * @return JsonResponse
      */
     public function login(Request $request)
     {
@@ -94,9 +95,9 @@ class AuthController extends Controller
 
     /**
      * Revoke User's Access Token
-     * 
-     * @param Illuminate\Http\Request $request
-     * @return Response
+     *
+     * @param Request $request
+     * @return JsonResponse
      */
     public function logout(Request $request)
     {
@@ -109,9 +110,9 @@ class AuthController extends Controller
 
     /**
      * Show User's information with Authorization Header
-     * 
-     * @param Illuminate\Http\Request $request
-     * @return Response
+     *
+     * @param Request $request
+     * @return JsonResponse
      */
     public function user(Request $request)
     {
