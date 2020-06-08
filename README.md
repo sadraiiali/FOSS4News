@@ -1,7 +1,7 @@
 ![FOSS4News_screenshot](doc/img/screenshot.png)
 [![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2Fsadraiiali%2FFOSS4News.svg?type=shield)](https://app.fossa.io/projects/git%2Bgithub.com%2Fsadraiiali%2FFOSS4News?ref=badge_shield)
 
-> # :warning: This project moved to [foss4/FOSS4News](https://github.com/foss4/FOSS4News) repository :warning:
+> # :warning: This project moved to [foss4/FOSS4News](https://github.com/foss4/FOSS4News) repository
 
 # FOSS4News
 
