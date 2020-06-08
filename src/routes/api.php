@@ -13,12 +13,12 @@ use Illuminate\Support\Facades\Route;
 |
  */
 
- // Authorization Routes
+// Authorization Routes
 Route::group(
     ['prefix' => 'auth'],
     function () {
         Route::post('login', 'Auth\AuthController@login');
-        Route::post('signup', 'Auth\AuthController@signup');
+        Route::post('register', 'Auth\AuthController@register');
 
         Route::group(
             ['middleware' => 'auth:api'],
@@ -26,6 +26,7 @@ Route::group(
                 Route::get('logout', 'Auth\AuthController@logout');
                 Route::get('user', 'Auth\AuthController@user');
             });
-    });
+    }
+);
 
 Route::get('/posts', 'PostController@getAllPosts');
